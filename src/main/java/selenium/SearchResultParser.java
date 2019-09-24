@@ -1,6 +1,10 @@
+package selenium;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import parsedresult.ParsedResult;
+import parsedresult.ParsedTournament;
 
 import java.util.List;
 import java.util.regex.Matcher;

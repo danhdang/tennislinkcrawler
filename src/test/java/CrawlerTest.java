@@ -1,3 +1,4 @@
+import jsoup.TournamentCrawler;
 import org.junit.Test;
 
 
@@ -5,8 +6,8 @@ public class CrawlerTest {
 
     @Test
     public void TestRun() {
-        Crawler crawler = new Crawler();
-        crawler.Run();
+        TournamentCrawler crawler = new TournamentCrawler();
+        crawler.crawl();
     }
 
 }

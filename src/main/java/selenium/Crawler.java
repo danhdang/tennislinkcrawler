@@ -1,10 +1,7 @@
-import com.machinepublishers.jbrowserdriver.JBrowserDriver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+package selenium;
 
-import java.util.List;
-import java.util.Optional;
+import com.machinepublishers.jbrowserdriver.JBrowserDriver;
+import org.openqa.selenium.WebDriver;
 
 public class Crawler {
 

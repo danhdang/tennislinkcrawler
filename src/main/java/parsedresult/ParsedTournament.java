@@ -1,3 +1,5 @@
+package parsedresult;
+
 public class ParsedTournament {
 
     private String tournamentStartDate;
