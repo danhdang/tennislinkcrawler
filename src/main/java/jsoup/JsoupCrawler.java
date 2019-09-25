@@ -7,7 +7,7 @@ import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 
-public class TournamentCrawler {
+public class JsoupCrawler {
 
     public void crawl() {
 

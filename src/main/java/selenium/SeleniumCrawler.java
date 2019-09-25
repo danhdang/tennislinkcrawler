@@ -3,7 +3,7 @@ package selenium;
 import com.machinepublishers.jbrowserdriver.JBrowserDriver;
 import org.openqa.selenium.WebDriver;
 
-public class Crawler {
+public class SeleniumCrawler {
 
     public void Run() {
         WebDriver driver = new JBrowserDriver();

@@ -1,8 +1,6 @@
-
 build/classes
 build/reports
 build/test-results
 build/tmp
-.gradle
-
+.gradle
 .idea
