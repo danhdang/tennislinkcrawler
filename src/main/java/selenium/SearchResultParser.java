@@ -1,5 +1,6 @@
 package selenium;
 
+import jsoup.TournamentPageParser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,25 +14,25 @@ import java.util.regex.Pattern;
 public class SearchResultParser {
 
     ParsedResult parsedResult = new ParsedResult();
+    TournamentPageParser pageParser = new TournamentPageParser();
 
-    public void parseSearchResult(WebDriver driver) {
-
+    public ParsedResult parseSearchResult(WebDriver driver) {
         WebElement tournamentTable = driver.findElement(By.id("ctl00_mainContent_dgTournaments"));
         List<WebElement> rows = tournamentTable.findElements(By.xpath("tbody/tr"));
-
         rows.stream().forEach(r ->{
             if(isTournamentRow(r)) {
-                parseTournamentRow(r);
+                ParsedTournament tournament = parseTournamentRow(r);
+                pageParser.parsePage(tournament.getTournamentGoLinkId().toString(), tournament);
             }
         });
-
+        return parsedResult;
     }
 
     private boolean isTournamentRow(WebElement rowWebElement) {
         return rowWebElement.getAttribute("align") == null;
     }
 
-    private void parseTournamentRow(WebElement rowWebElement) {
+    private ParsedTournament parseTournamentRow(WebElement rowWebElement) {
         ParsedTournament tournament = new ParsedTournament();
         parsedResult.getParsedTournamentList().add(tournament);
 
@@ -39,6 +40,8 @@ public class SearchResultParser {
         parseDateCell(tournament, tournamentCells.get(0));
         parseDescriptionCell(tournament, tournamentCells.get(1));
         parseLocationCell(tournament, tournamentCells.get(2));
+
+        return tournament;
     }
 
     private void parseLocationCell(ParsedTournament tournament, WebElement webElement) {
