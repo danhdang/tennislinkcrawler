@@ -4,6 +4,8 @@ import jsoup.TournamentPageParser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import pagination.PaginationInfo;
+import pagination.PaginationParser;
 import parsedresult.ParsedResult;
 import parsedresult.ParsedTournament;
 
@@ -15,6 +17,13 @@ public class SearchResultParser {
 
     ParsedResult parsedResult = new ParsedResult();
     TournamentPageParser pageParser = new TournamentPageParser();
+
+    public void parsePagination(WebDriver webDriver) {
+        WebElement pagelistWebElement = webDriver.findElement(By.className("pagelist"));
+        PaginationParser parser = new PaginationParser();
+        PaginationInfo paginationInfo = parser.parsePaginationHtml(pagelistWebElement.getAttribute("outerHTML"));
+
+    }
 
     public ParsedResult parseSearchResult(WebDriver driver) {
         WebElement tournamentTable = driver.findElement(By.id("ctl00_mainContent_dgTournaments"));
