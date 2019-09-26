@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pagination.PaginationInfo;
-import pagination.PaginationParser;
+import jsoup.PaginationParser;
 import parsedresult.ParsedResult;
 import parsedresult.ParsedTournament;
 
