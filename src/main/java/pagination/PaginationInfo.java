@@ -1,5 +1,7 @@
 package pagination;
 
+import org.apache.commons.lang.StringUtils;
+
 public class PaginationInfo {
     private Integer currentPage;
     private Integer nextPage;
@@ -31,10 +33,6 @@ public class PaginationInfo {
     }
 
     public boolean isLastPage() {
-        return isLastPage;
-    }
-
-    public void setLastPage(boolean lastPage) {
-        isLastPage = lastPage;
+        return StringUtils.isBlank(nextPageHref);
     }
 }

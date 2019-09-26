@@ -15,14 +15,18 @@ import java.util.regex.Pattern;
 
 public class SearchResultParser {
 
-    ParsedResult parsedResult = new ParsedResult();
-    TournamentPageParser pageParser = new TournamentPageParser();
+    private ParsedResult parsedResult = new ParsedResult();
+    private TournamentPageParser pageParser = new TournamentPageParser();
 
-    public void parsePagination(WebDriver webDriver) {
+    public ParsedResult getParsedResult() {
+        return parsedResult;
+    }
+
+    public PaginationInfo parsePagination(WebDriver webDriver) {
         WebElement pagelistWebElement = webDriver.findElement(By.className("pagelist"));
         PaginationParser parser = new PaginationParser();
         PaginationInfo paginationInfo = parser.parsePaginationHtml(pagelistWebElement.getAttribute("outerHTML"));
-
+        return paginationInfo;
     }
 
     public ParsedResult parseSearchResult(WebDriver driver) {
