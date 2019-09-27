@@ -33,6 +33,9 @@ public class ParsedTournament {
     private String checksPayableTo;
     private String sendChecksTo;
     private String tournamentWebsite;
+    private String cityState;
+    private String googleMap;
+    private String tournamentUstaUrl;
 
 
 
@@ -282,5 +285,29 @@ public class ParsedTournament {
 
     public void setDistrict(String district) {
         this.district = district;
+    }
+
+    public String getCityState() {
+        return cityState;
+    }
+
+    public void setCityState(String cityState) {
+        this.cityState = cityState;
+    }
+
+    public String getGoogleMap() {
+        return googleMap;
+    }
+
+    public void setGoogleMap(String googleMap) {
+        this.googleMap = googleMap;
+    }
+
+    public String getTournamentUstaUrl() {
+        return tournamentUstaUrl;
+    }
+
+    public void setTournamentUstaUrl(String tournamentUstaUrl) {
+        this.tournamentUstaUrl = tournamentUstaUrl;
     }
 }

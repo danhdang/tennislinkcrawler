@@ -1,4 +1,3 @@
-import jsoup.JsoupCrawler;
 import jsoup.TournamentPageParser;
 import org.junit.Assert;
 import org.junit.Test;

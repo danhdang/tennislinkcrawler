@@ -1,19 +1,29 @@
 package jsoup;
 
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 import parsedresult.ParsedResult;
 import parsedresult.ParsedTournament;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TournamentSearchResultParser {
+
     ParsedResult parsedResult = new ParsedResult();
 
-    public void parseSearchResult(Document document) {
+    public ParsedResult parseSearchResult(String html) {
+        Document document = Jsoup.parse(html);
+        parseSearchResult(document);
+        return parsedResult;
+    }
+
+    private void parseSearchResult(Document document) {
 
         Element tournamentTable = document.getElementById("ctl00_mainContent_dgTournaments");
         Elements rows = tournamentTable.select("tbody > tr");
@@ -41,6 +51,14 @@ public class TournamentSearchResultParser {
     }
 
     private void parseLocationCell(ParsedTournament tournament, Element webElement) {
+        Optional<TextNode> cityState = webElement.textNodes().stream().findFirst();
+        if(cityState.isPresent()) {
+            tournament.setCityState(cityState.get().text().trim());
+        }
+
+        Element mapElement = webElement.getElementsByTag("a").first();
+        tournament.setGoogleMap(mapElement.attr("href").trim());
+
     }
 
     private void parseDescriptionCell(ParsedTournament tournament, Element webElement) {
@@ -50,6 +68,7 @@ public class TournamentSearchResultParser {
         Matcher goLinkMatcher = Pattern.compile(".*\\((?<id>\\d+)\\);",Pattern.CASE_INSENSITIVE | Pattern.MULTILINE ).matcher(linkHref);
         if(goLinkMatcher.matches()) {
             tournament.setTournamentGoLinkId(goLinkMatcher.group("id"));
+            tournament.setTournamentUstaUrl("https://tennislink.usta.com/tournaments/TournamentHome/Tournament.aspx?T=" + tournament.getTournamentGoLinkId());
         }
 
         String linkText = tournamentLinkWebElement.text();
@@ -63,6 +82,15 @@ public class TournamentSearchResultParser {
                 tournament.setTournamentLevel(Integer.parseInt(levelMatcher.group("level")));
             }
         }
+
+        Element skillLevelElement = webElement.select(".tooltip2").first();
+        if(skillLevelElement != null) {
+            Optional<TextNode> skillLevelTextNode = skillLevelElement.textNodes().stream().findFirst();
+            if(skillLevelTextNode.isPresent()) {
+                tournament.setSkillLevel(skillLevelTextNode.get().text().trim());
+            }
+        }
+
     }
 
     private void parseDateCell(ParsedTournament tournament,  Element webElement) {
