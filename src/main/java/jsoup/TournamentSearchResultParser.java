@@ -10,6 +10,7 @@ import parsedresult.ParsedTournament;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.IntFunction;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -91,6 +92,14 @@ public class TournamentSearchResultParser {
             }
         }
 
+        Elements divisionElements = webElement.select("ul.plain-list.compact");
+        String[] divisions = divisionElements.stream().map(d -> cleanDivisionText(d.text())).toArray(String[]::new);
+        tournament.setDivisions(divisions);
+
+    }
+
+    private String cleanDivisionText(String text) {
+        return text.replace("(NEFNon-Elimination Format A non-elimination format is a type of draw in which players will play multiple matches regardless of their results in those matches. Non-Elimination Formats will be played as Round Robin or Compass Draws based upon the number of participants in the event.)", "").trim();
     }
 
     private void parseDateCell(ParsedTournament tournament,  Element webElement) {

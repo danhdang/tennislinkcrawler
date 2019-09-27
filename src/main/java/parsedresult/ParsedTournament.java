@@ -8,7 +8,7 @@ public class ParsedTournament {
     private Integer tournamentLevel;
     private String skillLevel;
     private String tournamentDates;
-    private String divisions;
+    private String[] divisions;
     private String section;
     private String district;
     private String surfaceType;
@@ -247,11 +247,11 @@ public class ParsedTournament {
         this.section = section;
     }
 
-    public String getDivisions() {
+    public String[] getDivisions() {
         return divisions;
     }
 
-    public void setDivisions(String divisions) {
+    public void setDivisions(String[] divisions) {
         this.divisions = divisions;
     }
 
