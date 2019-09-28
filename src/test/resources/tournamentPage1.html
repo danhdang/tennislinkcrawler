@@ -1,0 +1,1810 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml"  xmlns:fb="https://ogp.me/ns/fb#">
+<head id="ctl00_Head1"><meta name="robots" content="NOODP" /><meta name="Title" content="Tournaments" /><meta name="Description" content="Be competitive.  Live healthy.  Make friends.  Have fun.  Play USTA Tournaments!" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><link rel="image_src" href="/Dashboard/Common/images/SocialMedia/USTA_Logo.jpg" /><title>
+    Anaheim Tennis Center Junior Novice Tournament (Level 7): Home
+</title><link href="../Common/css/screen.css" type="text/css" rel="stylesheet" /><link href="../Common/css/print.css" type="text/css" rel="stylesheet" media="print" /><link href="../Common/css/redmond/jquery-ui-1.8.7.custom.css" type="text/css" rel="stylesheet" />
+    <!--[if IE]>
+    <link rel="stylesheet" href="../Common/css/ie.css" type="text/css" media="screen, projection" />
+    <![endif]-->
+    <link href="../Common/css/usta-master.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="../Common/js/jquery.tools.min.js" language="javascript"></script>
+    <!--USTA-20221-->
+    <script type="text/javascript" src="/Dashboard/Common/js/TLWidgetTracking.js"></script>
+    <!--USTA-16721 by Aaron Jee-->
+    <script type="text/javascript" src="/Dashboard/Common/js/tl.jscommon.js?v=6966"></script>
+    <!-- Navigation part -->
+
+    <link href="/Dashboard/Common/css/navigation.css" type="text/css" rel="stylesheet" />
+    <script src="/Dashboard/common/js/json2.js" type="text/javascript"></script>
+    <script src="/Dashboard/common/js/jstorage.js" type="text/javascript"></script>
+    <script src="/Dashboard/common/js/navigation.js?id=6966" type="text/javascript"></script>
+
+
+
+    <!--
+    <link href="../Common/css/redmond/jquery-ui-1.8.7.custom.css" type="text/css" rel="stylesheet" />
+
+        <script src="../Common/js/jquery-1.7.2.min.js"></script>
+
+        <script src="../Common/js/jquery-ui-1.8.23.custom.min.js"></script>
+
+    <script type="text/javascript" src="../Common/jquery-1.6.1.min.js" language="javascript"></script>
+    <script type="text/javascript" src="../Common/js/jquery-ui-1.8.23.custom.min.js" language="javascript"></script>
+    -->
+
+    <script type="text/javascript" language="javascript">
+        function pageLoad() {
+
+            // pageLoad from social media
+            if (typeof contentPageLoad == 'function') {
+                contentPageLoad();
+            }
+
+            // pageLoad for content pages
+            if (typeof contentPageLoad2 == 'function') {
+                contentPageLoad2();
+            }
+        }
+    </script>
+
+    <link type="text/css" rel="stylesheet" href="../Common/jquery-ui-1.8.23.custom/development-bundle/themes/base/jquery.ui.all.css" />
+    <script type="text/javascript" src="../Common/js/jquery.ui.all.js"></script>
+    <script src="../Common/colorbox/jquery.colorbox.js" type="text/javascript"></script>
+    <link href="../Common/colorbox/colorbox.css" rel="stylesheet" type="text/css" />
+
+    <script language="javascript" type="text/javascript">
+        var sTournamentID = '233440';
+
+        function ViewReport(iReportID) {
+            window.open('PreviewTDReport.aspx?id=' + iReportID, '', 'toolbar=1,menubar=1,scrollbars=1,resizable=yes,location=0,directories=0,width=995,height=675,top=100,left=10');
+        }
+
+        function ShowPlayerRecord(sMemberID) {
+            var uRL = '/tournaments/draws/PlayerTournamentHistory.aspx?MID=' + sMemberID;
+            var oPopup = window.open(uRL, '', 'menubar=0,status=1,scrollbars=1,resizable=0,left=100,top=100,height=500,width=570');
+        }
+
+        function OpenNewURL(URL) {
+            alert('You are now being directed to another Web site. Information displayed on this web-site is not the responsibility of the United States Tennis Association Incorporated.');
+            window.open(URL, 'website', 'width=800, height=600, scrollbars=yes, toolbar=yes, top=0, resizable=yes');
+            return false;
+        }
+        $(document).ready(function () {
+            $(".iframe").colorbox({ iframe: true, width: "880", height: "510" });
+        });
+    </script>
+
+    <script language="javascript" type="text/javascript">
+        function ShowPlayers() {
+            var intEventID = document.getElementById('ctl00_mainContent_ControlTabs1_ddlEvents').options[document.getElementById('ctl00_mainContent_ControlTabs1_ddlEvents').selectedIndex].value;
+            window.location.href = intEventID;
+        }
+
+    </script>
+
+    <script type="text/javascript">
+        //    result tab
+        $(document).ready(function () {
+            if (GetCookieValueByName('233440_Standing') == 'hide') {
+                $(".slidingDiv").hide();
+            }
+        });
+        function ExpandResult() {
+            $(".slidingDiv").slideToggle(function () {
+                if ($(".slidingDiv").css("display") == "block") {
+                    SetCookieValueByName('233440_Standing', 'show', 1);
+                }
+                else {
+                    SetCookieValueByName('233440_Standing', 'hide', 1);
+                }
+            }).siblings(".slidingDiv:visible").slideUp(function () {
+                if ($(".slidingDiv").css("display") == "block") {
+                    SetCookieValueByName('233440_Standing', 'show', 1);
+                }
+                else {
+                    SetCookieValueByName('233440_Standing', 'hide', 1);
+                }
+            });
+            $(this).toggleClass("imgToggleactive");
+            $(this).siblings("#imgToggle").removeClass("imgToggleactive");
+        }
+
+    </script>
+
+    <script language="javascript" type="text/javascript">
+
+        function ToTeamDrawTop() {
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+        }
+
+        function ShowTeamDraw(strFlightId) {
+            $("#ctl00_mainContent_ControlTabs9_ddlFlight").val(strFlightId).trigger('change');
+        }
+
+        function PrintTeamDraws(strFlightId) {
+            window.open('../TDM/draws/DrawImage.aspx?t=' + sTournamentID + '&el=' + strFlightId + '&td=1', 'Print Team Draws', 'menubar=1,scrollbars=1,resizable=1,left=50,top=50,height=500,width=700');
+        }
+
+        function ShowDraw(intEventID, strDraw, intSection) {
+            __doPostBack('ctl00_mainContent_ControlTabs3_pnlUpdate', 'T=' + sTournamentID + '&E=' + intEventID + '&D=' + strDraw + '&S=' + intSection);
+        }
+
+        function ChangeImage(strImgName, strReplaceImg) {
+            if (document.images) {
+                document[strImgName].src = strReplaceImg + '.gif';
+            }
+        }
+
+        function ShowAllDraws() {
+            __doPostBack('ctl00_mainContent_ControlTabs3_pnlUpdate', 'T=' + sTournamentID);
+        }
+
+        var printDrawWin = null;
+
+        function PrintDraw(tid, eid, draw, s, type) {
+            if (printDrawWin != null && printDrawWin.closed) {
+                printDrawWin = null;
+            }
+            if (printDrawWin == null) {
+                var current = '' + new Date().getTime();
+                printDrawWin = window.open('ExportDrawToPDF.aspx?t=' + tid + '&e=' + eid + '&d=' + draw + '&a=' + s + '&type=' + type + "&h=" + $("#divCenter")[0].clientHeight, current, 'menubar=1,scrollbars=1,resizable=1,left=50,top=50,height=500,width=700');
+            }
+            else {
+                printDrawWin.focus();
+            }
+        }
+
+        var canShowPopupInfo = false;
+        function DisplayPopUp() {
+            try {
+                if (canShowPopupInfo) {
+                    document.getElementById("divPopupInfo").style.display = "block";
+                    document.getElementById("divPopupInfo").style.visibility = "visible";
+                }
+            }
+            catch (e) {
+                alert(e.message);
+            }
+        }
+
+        function HidePopUp() {
+            document.getElementById("divPopupInfo").style.display = "none";
+            document.getElementById("divPopupInfo").style.visibility = "hidden";
+        }
+
+        function ShowRROrderOfFinish(tid, eid) {
+            $.colorbox({
+                iframe: true, width: "530px", height: "550px", href: "/Tournaments/TDM/Draws/EditRROrderOfFinish.aspx?T=" + tid + "&E=" + eid,
+                onComplete: function () {
+                    var hostName = window.location.hostname.toLowerCase();
+                    if (hostName.startWith("m.")) {
+                        setTimeout(function () {
+                            if ($("iframe", "#cboxLoadedContent").length < 1) return;
+                            var html = $("#cboxLoadedContent")[0].outerHTML;
+                            var h = $(html).height();
+                            $("iframe", "#cboxLoadedContent").height(h);
+
+                        }, 1000);
+                    }
+                }
+            });
+        }
+
+        window.onbeforeprint = function () {
+            $('a').each(function (index, item) {
+                var link = $(item);
+                link.attr('href1', link.attr('href'));
+                link.removeAttr('href');
+            });
+        };
+
+        window.onafterprint = function () {
+            $('a').each(function (index, item) {
+                var link = $(item);
+                link.attr('href', link.attr('href1'));
+            });
+        };
+
+        $(document).ready(function () {
+            $('#DivisionDetailedList').click(function () {
+                $("#DivisionListDialog").dialog({
+                    autoresize: true,
+                    show: { effect: "fade", duration: 500 },
+                    hide: { effect: "fade", duration: 500 },
+                    create: function () {
+                        $(".ui-dialog").css("box-shadow", "#333 0px 0px 15px 0px");
+                    },
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            if ($.browser.mozilla) {
+                var dgMessages = $("#ctl00_mainContent_ControlTabs0_dgMessages");
+                if (dgMessages != undefined) {
+                    var styles = dgMessages.attr("style");
+                    dgMessages.css({ "page-break-before": "always" });
+                }
+            }
+        });
+    </script>
+    <script type='text/javascript'>  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-2530891-13']);  _gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})(); </script>
+</head>
+
+<body>
+
+<form name="aspnetForm" method="post" action="./Tournament.aspx?T=233440" id="aspnetForm">
+    <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+        <input type="hidden" name="ctl00_ScriptManager1_HiddenField" id="ctl00_ScriptManager1_HiddenField" value="" />
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTg3NTQ1NTEyNg9kFgJmD2QWBGYPZBYEAhQPZBYCZg8WAh4EVGV4dAUGMjMzNDQwZAIVD2QWAmYPFgIfAAW/AzxzY3JpcHQgdHlwZT0ndGV4dC9qYXZhc2NyaXB0Jz4gIHZhciBfZ2FxID0gX2dhcSB8fCBbXTsgIF9nYXEucHVzaChbJ19zZXRBY2NvdW50JywgJ1VBLTI1MzA4OTEtMTMnXSk7ICBfZ2FxLnB1c2goWydfdHJhY2tQYWdldmlldyddKTsoZnVuY3Rpb24oKSB7dmFyIGdhID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc2NyaXB0Jyk7IGdhLnR5cGUgPSAndGV4dC9qYXZhc2NyaXB0JzsgZ2EuYXN5bmMgPSB0cnVlO2dhLnNyYyA9ICgnaHR0cHM6JyA9PSBkb2N1bWVudC5sb2NhdGlvbi5wcm90b2NvbCA/ICdodHRwczovL3NzbCcgOiAnaHR0cDovL3d3dycpICsgJy5nb29nbGUtYW5hbHl0aWNzLmNvbS9nYS5qcyc7dmFyIHMgPSBkb2N1bWVudC5nZXRFbGVtZW50c0J5VGFnTmFtZSgnc2NyaXB0JylbMF07IHMucGFyZW50Tm9kZS5pbnNlcnRCZWZvcmUoZ2EsIHMpO30pKCk7IDwvc2NyaXB0PmQCAQ9kFhoCAQ8WAh8ABVI8c2NyaXB0IHNyYz0naHR0cHM6Ly9zc2wudXN0YS5jb20vdGhpcmRwYXJ0eS9pbmNsdWRlX3NpdGVoZWFkZXIuanMuYXNweCc+PC9zY3JpcHQ+ZAIDDw8WAh4HVmlzaWJsZWdkZAIID2QWBgIBDw8WAh4LTmF2aWdhdGVVcmwFCy9EYXNoYm9hcmQvZGQCAw8PFgIfAgUNL3RvdXJuYW1lbnRzL2RkAgUPZBYCAgEPZBYCZg9kFgICAQ8PFgIfAgXyAn4vU2NoZWR1bGUvU2VhcmNoUmVzdWx0cy5hc3B4P0FjdGlvbj0yJktleXdvcmQ9JlRvdXJuYW1lbnRJRD0mU2VjdGlvbkRpc3RyaWN0PSZDaXR5PSZTdGF0ZT0mWmlwPTkyMTI5Jk1vbnRoPTkmU3RhcnREYXRlPSZFbmREYXRlPSZEYXk9JlllYXI9MjAxOSZEaXZpc2lvbj0mQ2F0ZWdvcnk9JlN1cmZhY2U9Jk9ubGluZUVudHJ5PTAmRHJhd3NTaGVldHM9MCZQYWdlTnVtPTAmVXNlclRpbWU9JlNhbmN0aW9uZWQ9LTEmQWdlR3JvdXA9WSZTa2lsbExldmVsX0VudHJ5TGV2ZWw9RmFsc2UmU2tpbGxMZXZlbF9JbnRlcm1lZGlhdGU9RmFsc2UmU2tpbGxMZXZlbF9BZHZhbmNlZD1GYWxzZSZTZWFyY2hSYWRpdXM9LTEmUXVpY2tTZWFyY2g9MCZPcmRlckJ5PTNkZAIKD2QWAgIBD2QWAmYPZBYCAgMPDxYCHwFnZGQCCw9kFkICAQ8WAh8ABc0BQm95cycgMTggU2luZ2xlczxicj5Cb3lzJyAxNiBTaW5nbGVzPGJyPkJveXMnIDE0IFNpbmdsZXM8YnI+Qm95cycgMTIgU2luZ2xlczxicj5HaXJscycgMTggU2luZ2xlczxicj5HaXJscycgMTYgU2luZ2xlczxicj5HaXJscycgMTQgU2luZ2xlczxicj5HaXJscycgMTIgU2luZ2xlczxicj5Cb3lzJyAxMCBTaW5nbGVzPGJyPkdpcmxzJyAxMCBTaW5nbGVzPGJyPmQCAg8WAh8ABThBbmFoZWltIFRlbm5pcyBDZW50ZXIgSnVuaW9yIE5vdmljZSBUb3VybmFtZW50IChMZXZlbCA3KWQCAw8WAh8ABSI8c3Ryb25nPlNhbmN0aW9uZWQgQnk8L3N0cm9uZz48YnI+ZAIEDxYCHwAFPjxJTUcgc3JjPSIuLi9pbWFnZXMvbG9nb3MvU291dGhlcm5DYWxTZWN0XzJjLnBuZyIgd2lkdGg9IjExMiI+ZAIFDxYCHwAFCTY1MDAyMzcxOWQCBg8WAh8ABY8CPHNwYW4gY2xhc3M9InRvb2x0aXBIb21lcGFnZSBhc2xpbmsiPkVudHJ5IExldmVsPHNwYW4gY2xhc3M9ImNsYXNzaWM0MDAgY2xhc3NpYzIgbm9ybWFsLWZvbnQtc3R5bGUiPjxzdHJvbmc+RW50cnkgTGV2ZWw8L3N0cm9uZz48YnIgLz5JcyB5b3VyIGNoaWxkIGp1c3Qgc3RhcnRpbmcgdG8gY29tcGV0ZT8gIEtpZHMgY2FuIGdhaW4gZXhwZXJpZW5jZSBhbmQgY29uZmlkZW5jZSBieSBwbGF5aW5nIG11bHRpcGxlIG1hdGNoZXMgY2xvc2UgdG8gaG9tZS48L3NwYW4+PC9zcGFuPmQCBw8WAh8ABRFTZXB0ZW1iZXIgMiwgMjAxOWQCCQ8WAh8ABQ5Tby4gQ2FsaWZvcm5pYWQCCg8WAh8ABRNTb3V0aGVybiBDYWxpZm9ybmlhZAILDxYCHwAFBEhhcmRkAgwPFgIfAGVkAg0PFgIfAAUiOS80LzIwMTkgODoxMjowMSBQTSAoUGFjaWZpYyBUaW1lKWQCDg8WAh8ABTJPcmFuZ2UgQ291bnR5IFRlbm5pcyBBY2FkZW15L0FuYWhlaW0gVGVubmlzIENlbnRlcmQCDw8WAh8ABQo3MTQ5OTE5MDkwZAIQDxYCHwBlZAIRDw8WBB8AZR8CBRJqYXZhc2NyaXB0OnZvaWQoKTsWAh4Hb25jbGljawUoamF2YXNjcmlwdDpyZXR1cm4gT3Blbk5ld1VSTCgnaHR0cDovLycpO2QCEg8WAh8ABTI5NzUgUyBTdGF0ZSBDb2xsZWdlIEJsdmQ8YnI+QW5haGVpbSwgQ0EmbmJzcDs5MjgwNmQCEw8PFgIfAgVLaHR0cDovL3d3dy5nb29nbGUuY29tL21hcHM/ZGFkZHI9OTc1IFMgU3RhdGUgQ29sbGVnZSBCbHZkIEFuYWhlaW0sIENBIDkyODA2ZGQCFA8WAh8ABQ9NaWNoYWVsICBOZWxzb25kAhUPFgIfAAUOKDcxNCkgOTkxLTkwOTBkAhYPFgIfAAUMNzE0LTgxNC04MTgzZAIXDxYCHwBlZAIYDw8WBB8ABRttaWtlbmVsc29udGVubmlzMkB5YWhvby5jb20fAgUibWFpbHRvOm1pa2VuZWxzb250ZW5uaXMyQHlhaG9vLmNvbWRkAhkPFgIfAGVkAhoPFgIfAGVkAhsPDxYEHwBlHwIFB21haWx0bzpkZAIcDw8WAh8BaGRkAh4PFgIfAAUORW50cmllcyBDbG9zZWRkAh8PFgIfAAUZVGh1cnNkYXksIEF1Z3VzdCAyOSwgMjAxOWQCIA8WAh8ABRIkNDkuOTUgcGVyIHBsYXllci5kAiEPFgIfAAUVQW5haGVpbSBUZW5uaXMgQ2VudGVyZAIiDxYCHwAFQ0FuYWhlaW0gVGVubmlzIENlbnRlciwgOTc1IFMuIFN0YXRlIENvbGxlZ2UgQmx2ZCwgQW5haGVpbSBDYS4gOTI4MDZkAiQPZBYCZg9kFgQCBw9kFhQCAQ9kFgICAQ8PFgQeCENzc0NsYXNzBQdjdXJyZW50HgRfIVNCAgJkZAIDDxYCHwFnFgICAQ8PFgQfBGUfBQICZGQCBQ8WAh8BaBYCAgEPDxYEHwRlHwUCAmRkAgcPFgIfAWgWAgIBDw8WBB8EZR8FAgJkZAIJDxYCHwFoFgICAQ8PFgQfBGUfBQICZGQCCw8WAh8BZxYCAgEPDxYEHwRlHwUCAmRkAg0PFgIfAWgWAgIBDw8WBB8EZR8FAgJkZAIPDxYCHwFnFgICAQ8PFgQfBGUfBQICZGQCEQ8WAh8BaBYCAgEPDxYEHwRlHwUCAmRkAhMPFgIfAWcWAgIBDw8WBB8EZR8FAgJkZAIJD2QWAmYPZBYIAgEPPCsACwEADxYKHghEYXRhS2V5cxYAHgtfIUl0ZW1Db3VudAIFHglQYWdlQ291bnQCAR4VXyFEYXRhU291cmNlSXRlbUNvdW50AgUfAWdkFgJmD2QWCgIBD2QWAmYPZBYCZg8VA54BPGZvbnQgIHN0eWxlPSdmb250LWZhbWlseTpBcmlhbDsgZm9udC1zaXplOjEyOyBjb2xvcjpibHVlOyBmb250LXdlaWdodDpub3JtYWwnPkFUVEVOVElPTiBBTEwgU1BFQ1RBVE9SUyBGUk9NIFRIRSBTT1VUSEVSTiBDQUxJRk9STklBIFRFTk5JUyBBU1NPQ0lBVElPTjwvZm9udD7KDChJTkNMVURFUyBQQVJFTlRTLCBDT0FDSEVTLCBSRUxBVElWRVMsIEZSSUVORFMsIEVUQy4pSW4gYW4gZWZmb3J0IHRvIHByb21vdGUgYSBtb3JlIGVuam95YWJsZSBhbmQgZmFpciBleHBlcmllbmNlIGZvciBhbGwsIHRoZSBmb2xsb3dpbmcgcG9saWN5IGlzIGluIGltbWVkaWF0ZSBmb3JjZSBhbmQgZWZmZWN0LCBhbmQgd2lsbCBkaWxpZ2VudGx5IGFuZCBzdHJpbmdlbnRseSBlbmZvcmNlZC4gVVNUQSBTb3V0aGVybiBDYWxpZm9ybmlhIChTQ1RBKSBoYXMgaW1wbGVtZW50ZWQgYSAiWkVSTyBUT0xFUkFOQ0UiIHBvbGljeSBvbiBpbXByb3BlciBiZWhhdmlvci4xLiBBbnkgYXR0ZW1wdCBieSBhIHNwZWN0YXRvciB0byBzcGVhayB0byBhbiBvZmZpY2lhbCByZWdhcmRpbmcgYSBsaW5lIGNhbGwgb3Igb3RoZXIgcnVsaW5nIGR1cmluZyBtYXRjaCBwbGF5IHdpbGwgYmUgY2F1c2UgZm9yIGltbWVkaWF0ZSByZW1vdmFsIGZyb20gdGhlIHBsYXlpbmcgYXJlYSBhbmQsIGlmIHdhcnJhbnRlZCwgZnJvbSB0aGUgcHJlbWlzZXMuPGJyPjIuIEFueSBzcGVjdGF0b3IgYmVoYXZpb3IgZGVlbWVkIHVuYWNjZXB0YWJsZSB0b3dhcmRzIGEgcGxheWVyLCBvdGhlciBzcGVjdGF0b3Igb3Igc3RhZmYgbWVtYmVyIHdpbGwgYmUgY2F1c2UgZm9yIGltbWVkaWF0ZSByZW1vdmFsIGZyb20gdGhlIHBsYXlpbmcgYXJlYSBvciB0aGUgZW50aXJlIHByZW1pc2VzLiBJZiBzYWlkIGJlaGF2aW9yIGlzIGRpcmVjdGVkIHRvd2FyZHMgYSBwbGF5ZXIsIGVpdGhlciBiZWZvcmUsIGR1cmluZyBvciBhZnRlciBhIHRvdXJuYW1lbnQsIGl0IHdpbGwgcmVzdWx0IGluIEFOIEFVVE9NQVRJQyBBTkQgSU1NRURJQVRFIFNVU1BFTlNJT04gT0YgVEhBVCBTUEVDVEFUT1InUyBSSUdIVCBUTyBBVFRFTkQgVVNUQSBTT1VUSEVSTiBDQUxJRk9STklBIEdSSUVWQU5DRSBBTkQgU1BPUlRTTUFOU0hJUCBDT01NSVRURUUuPGJyPjMuIFJlZnVzYWwgdG8gYWRoZXJlIHRvIHJlbW92YWwgcmVxdWVzdCB3aWxsIHRyaWdnZXIgaW1tZWRpYXRlIGVuZm9yY2VtZW50IG9mIHRoZSBwb2ludCBwZW5hbHR5IHN5c3RlbSBhZ2FpbnN0IHRoZSBwbGF5ZXIgd2l0aCB3aG9tIHRoZSBzcGVjdGF0b3IgaXMgaW52b2x2ZWQgKHBlciBwb2ludCBwZW5hbHR5IHN5c3RlbSByZWd1bGF0aW9ucyksIGluY2x1ZGluZyBwb3NzaWJsZSBpbW1lZGlhdGUgZGVmYXVsdC48YnI+NC4gVGhlIE9uLVNpdGUgT2ZmaWNpYWwgaXMgdGhlIFNPTEUganVkZ2UgcmVnYXJkaW5nIHVuYWNjZXB0YWJsZSBiZWhhdmlvci48YnI+VW1waXJlL1NwZWN0YXRvciBjb21tdW5pY2F0aW9uLCB3aGV0aGVyIGl0IGJlIGFib3V0IGEgcnVsaW5nIG9yIGFueSBvdGhlciBmYWNldCBvZiBhIHRlbm5pcyBldmVudCBpcyBwcm9oaWJpdGVkIHdoaWxlIGEgbWF0Y2ggaXMgaW4gcHJvZ3Jlc3MuIEJlaW5nIGEgcGFyZW50LCBjb2FjaCwgZXRjLiBkb2VzIG5vdCBlbmRvdyBzcGVjaWFsIHByaXZpbGVnZXMuIFdpdGggdGhlIG9ubHkgZXhjZXB0aW9uIG9mIHRoZSByaWdodCB0byBtb3ZlIHRoZWlyIG93biBjaGlsZCBmcm9tIGNvbXBldGl0aW9uIGF0IGFueSB0aW1lLCBhIHBhcmVudCBvciBjb2FjaCBpcyBtZXJlbHkgYSBzcGVjdGF0b3IuAGQCAg9kFgJmD2QWAmYPFQOPATxmb250ICBzdHlsZT0nZm9udC1mYW1pbHk6QXJpYWw7IGZvbnQtc2l6ZToxMjsgY29sb3I6cmVkOyBmb250LXdlaWdodDpub3JtYWwnPlRJTUVTIEZPUiAgQUxMIERJVklTSU9OUyAoIFBMRUFTRSBBUlJJVkUgMjAgTUlOVVRFUyBFQVJMWSk8L2ZvbnQ+iwJCT1lTJyAxNiBTSU5HTEVTIE1PTkRBWSAxMSBBTTxicj5CT1lTJyAxNCBTSU5HTEVTIE1PTkRBWSAxMSBBTTxicj5CT1lTJzEyIFNJTkdMRVMgTU9OREFZICAxMSBBTTxicj5CT1lTJyAxMCBTSU5HTEVTIE1PTkRBWSAxOjMwIFBNPGJyPkdJUkxTJyAxNiBTSU5HTEVTIE1PTkRBWSAxMUFNPGJyPkdJUkxTJyAxNCBTSU5HTEVTIE1PTkRBWSAxMSBBTTxicj5HSVJMUycgMTIgU0lOR0xFUyBNT05EQVkgMTEgQU08YnI+R0lSTFMnIDEwIFNJTkdMRVMgTU9OREFZIDE6MzAgUE0AZAIDD2QWAmYPZBYCZg8VA3E8Zm9udCAgc3R5bGU9J2ZvbnQtZmFtaWx5OkFyaWFsOyBmb250LXNpemU6MTI7IGNvbG9yOnJlZDsgZm9udC13ZWlnaHQ6bm9ybWFsJz5TSVRFIDpBTkFIRUlNIFRFTk5JUyBDRU5URVIgPC9mb250Pks5NzUgUy4gU1RBVEUgQ09MTEVHRSBCTFZELEFOQUhFSU0gQ0EuIDkyODA2PGJyPjxicj48YnI+NzE0LTk5MS05MDkwPGJyPjxicj4AZAIED2QWAmYPZBYCZg8VA2Y8Zm9udCAgc3R5bGU9J2ZvbnQtZmFtaWx5OkFyaWFsOyBmb250LXNpemU6MTI7IGNvbG9yOnJlZDsgZm9udC13ZWlnaHQ6bm9ybWFsJz5JTVBPUlRBTlQgTUVTU0FHRTwvZm9udD5cVEhFIEFOQUhFSU0gVEVOTklTIENFTlRFUiBJUyBVTkRFUiBSRU1PREVMIFRIRSBFTlRSQU5DRSBUTyBUSEUgQ0xVQiBJUyBGUk9NIFRIRSBQQVJLSU5HIExPVC4AZAIFD2QWAmYPZBYCZg8VA2M8Zm9udCAgc3R5bGU9J2ZvbnQtZmFtaWx5OkFyaWFsOyBmb250LXNpemU6MTI7IGNvbG9yOmJsYWNrOyBmb250LXdlaWdodDpub3JtYWwnPk1BVENIIEZPUk1BVDwvZm9udD61ATEgU0hPUlQgU0VUIFRPIDUsIE5PIEFEIFNDT1JJTkcsICBGT1IgQUxMIFNJTkdMRVMgRElWSVNJT05TIEVYQ0VQVCBCT1lTJyBBTkQgR0lSTFMnIDEwIGFuZCAxMiBESVZJU0lPTlMuIDxicj5CT1lTJyBBTkQgR0lSTFMnIDEwIERJVklTSU9OUyAgUExBWSBBIFNIT1JUIFNFVCwgRklSU1QgVE8gNCBHQU1FUyBOTyBBRCwAZAIDDzwrAAsAZAIGDzwrAAsAZAILDw8WAh8BaGRkAgwPZBYCAgEPFgIfAAWoAjxkaXYgc3R5bGU9J2Rpc3BsYXk6YmxvY2s7IG1hcmdpbi1sZWZ0OiAtNXB4Oyc+PGlmcmFtZSBzcmM9J2h0dHBzOi8vdGx3aWRnZXQudXN0YS5jb20vVExXaWRnZXQvV2lkZ2V0P3dpZGdldFR5cGU9dGVubmlzbGluayZhcHA9VG91cm5hbWVudHMnIGZyYW1lYm9yZGVyPScwJyBjbGFzcz0ncGVyc29uYWxpemF0aW9uLXdpZGdldCcgc3R5bGU9J3dpZHRoOiAxNjlweDsgaGVpZ2h0OiA2NjBweDsgbWFyZ2luOiAwcHg7IHBhZGRpbmc6IDBweDsgYm9yZGVyOiAwcHg7IGRpc3BsYXk6IGJsb2NrOyc+PC9pZnJhbWU+PC9kaXY+ZAIND2QWBAIBDxQrAAJkEBYAFgAWAGQCAw8WAh8ABbEQDQo8c2NyaXB0IHR5cGU9J3RleHQvamF2YXNjcmlwdCc+DQogICAgdmFyIGdvb2dsZXRhZyA9IGdvb2dsZXRhZyB8fCB7fTsNCiAgICBnb29nbGV0YWcuY21kID0gZ29vZ2xldGFnLmNtZCB8fCBbXTsNCiAgICAoZnVuY3Rpb24gKCkgew0KICAgICAgICB2YXIgZ2FkcyA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ3NjcmlwdCcpOw0KICAgICAgICBnYWRzLmFzeW5jID0gdHJ1ZTsNCiAgICAgICAgZ2Fkcy50eXBlID0gJ3RleHQvamF2YXNjcmlwdCc7DQogICAgICAgIHZhciB1c2VTU0wgPSAnaHR0cHM6JyA9PSBkb2N1bWVudC5sb2NhdGlvbi5wcm90b2NvbDsNCiAgICAgICAgZ2Fkcy5zcmMgPSAodXNlU1NMID8gJ2h0dHBzOicgOiAnaHR0cDonKSArDQogICAgICAgICcvL3d3dy5nb29nbGV0YWdzZXJ2aWNlcy5jb20vdGFnL2pzL2dwdC5qcyc7DQogICAgICAgIHZhciBub2RlID0gZG9jdW1lbnQuZ2V0RWxlbWVudHNCeVRhZ05hbWUoJ3NjcmlwdCcpWzBdOw0KICAgICAgICBub2RlLnBhcmVudE5vZGUuaW5zZXJ0QmVmb3JlKGdhZHMsIG5vZGUpOw0KICAgIH0pKCk7DQo8L3NjcmlwdD4NCjxzY3JpcHQgdHlwZT0ndGV4dC9qYXZhc2NyaXB0Jz4NCiAgICBnb29nbGV0YWcuY21kLnB1c2goZnVuY3Rpb24gKCkgew0KICAgICAgICBnb29nbGV0YWcuZGVmaW5lU2xvdCgnLzU2ODEvVVNUQS9Ub3VybmFtZW50cy8zMDB4MjUwX0xlZnQnLCBbMzAwLCAyNTBdLCAnVG91cm5hbWVudHNfMzAweDI1MF9MZWZ0JykuYWRkU2VydmljZShnb29nbGV0YWcucHViYWRzKCkpOw0KICAgICAgICBnb29nbGV0YWcuZGVmaW5lU2xvdCgnLzU2ODEvVVNUQS9Ub3VybmFtZW50cy8zMDB4MjUwX01pZGRsZScsIFszMDAsIDI1MF0sICdUb3VybmFtZW50XzMwMHgyNTBfTWlkZGxlJykuYWRkU2VydmljZShnb29nbGV0YWcucHViYWRzKCkpOw0KICAgICAgICBnb29nbGV0YWcuZGVmaW5lU2xvdCgnLzU2ODEvVVNUQS9Ub3VybmFtZW50cy8zMDB4MjUwX1JpZ2h0JywgWzMwMCwgMjUwXSwgJ1RvdXJuYW1lbnRzXzMwMHgyNTBfUmlnaHQnKS5hZGRTZXJ2aWNlKGdvb2dsZXRhZy5wdWJhZHMoKSk7DQogICAgICAgIGdvb2dsZXRhZy5lbmFibGVTZXJ2aWNlcygpOw0KICAgIH0pOw0KPC9zY3JpcHQ+DQoNCjxzdHlsZT4NCiNUb3VybmFtZW50c18zMDB4MjUwX0xlZnQNCnsNCiAgICBmbG9hdDpsZWZ0Ow0KICAgIHBhZGRpbmc6IDEwcHggMCAwIDBweDsNCn0NCiNUb3VybmFtZW50XzMwMHgyNTBfTWlkZGxlLCAjVG91cm5hbWVudHNfMzAweDI1MF9SaWdodA0Kew0KICAgIGZsb2F0OmxlZnQ7DQogICAgcGFkZGluZzogMTBweCAwIDAgNTBweDsNCn0NCjwvc3R5bGU+DQoNCjwhLS0gVVNUQS9Ub3VybmFtZW50cy8zMDB4MjUwX0xlZnQgLS0+DQo8ZGl2IGlkPSdUb3VybmFtZW50c18zMDB4MjUwX0xlZnQnIHN0eWxlPSd3aWR0aDozMDBweDsgaGVpZ2h0OjI1MHB4Oyc+DQo8c2NyaXB0IHR5cGU9J3RleHQvamF2YXNjcmlwdCc+DQogICAgZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uICgpIHsgZ29vZ2xldGFnLmRpc3BsYXkoJ1RvdXJuYW1lbnRzXzMwMHgyNTBfTGVmdCcpOyB9KTsNCjwvc2NyaXB0Pg0KPC9kaXY+DQoNCjwhLS0gVVNUQS9Ub3VybmFtZW50cy8zMDB4MjUwX01pZGRsZSAtLT4NCjxkaXYgaWQ9J1RvdXJuYW1lbnRfMzAweDI1MF9NaWRkbGUnIHN0eWxlPSd3aWR0aDozMDBweDsgaGVpZ2h0OjI1MHB4Oyc+DQo8c2NyaXB0IHR5cGU9J3RleHQvamF2YXNjcmlwdCc+DQogICAgZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uICgpIHsgZ29vZ2xldGFnLmRpc3BsYXkoJ1RvdXJuYW1lbnRfMzAweDI1MF9NaWRkbGUnKTsgfSk7DQo8L3NjcmlwdD4NCjwvZGl2Pg0KDQo8IS0tIFVTVEEvVG91cm5hbWVudHMvMzAweDI1MF9SaWdodCAtLT4NCjxkaXYgaWQ9J1RvdXJuYW1lbnRzXzMwMHgyNTBfUmlnaHQnIHN0eWxlPSd3aWR0aDozMDBweDsgaGVpZ2h0OjI1MHB4Oyc+DQo8c2NyaXB0IHR5cGU9J3RleHQvamF2YXNjcmlwdCc+DQogICAgZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uICgpIHsgZ29vZ2xldGFnLmRpc3BsYXkoJ1RvdXJuYW1lbnRzXzMwMHgyNTBfUmlnaHQnKTsgfSk7DQo8L3NjcmlwdD4NCjwvZGl2Pg0KZAIPDxYCHwAFUjxzY3JpcHQgc3JjPSdodHRwczovL3NzbC51c3RhLmNvbS90aGlyZHBhcnR5L2luY2x1ZGVfc2l0ZWZvb3Rlci5qcy5hc3B4Jz48L3NjcmlwdD5kAhAPDxYEHwAFClBST0RVQ1RJT04fAWhkZAIRDw8WAh8ABRJDb2RlIDEuMTAuMDAwLjcyMjlkZAISDw8WAh8ABQ0xLjEwLjAwMC43MjI5ZGQCEw8PFgIfAAUDOjoxZGQCFA9kFgRmD2QWAmYPZBYCZg8WAh8ABfUCPCEtLSBTdGFydCBRdWFudGNhc3QgdGFnIC0tPiA8c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+IF9xb3B0aW9ucz17IHFhY2N0OiJwLTc0dUQta2dtdnA4M3ciIH07IDwvc2NyaXB0PiA8c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCIgc3JjPSIvL3NlY3VyZS5xdWFudHNlcnZlLmNvbS9xdWFudC5qcyI+PC9zY3JpcHQ+IDxub3NjcmlwdD4gPGltZyBzcmM9Ii8vc2VjdXJlLnF1YW50c2VydmUuY29tL3BpeGVsL3AtNzR1RC1rZ212cDgzdy5naWYiIHN0eWxlPSJkaXNwbGF5OiBub25lOyIgYm9yZGVyPSIwIiBoZWlnaHQ9IjEiIHdpZHRoPSIxIiBhbHQ9IlF1YW50Y2FzdCIvPiA8L25vc2NyaXB0PiA8IS0tIEVuZCBRdWFudGNhc3QgdGFnIC0tPmQCAg8PFgIfAWhkZGSHemCZ5bb4pM8gRbMt/gcO" />
+    </div>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        var theForm = document.forms['aspnetForm'];
+        if (!theForm) {
+            theForm = document.aspnetForm;
+        }
+        function __doPostBack(eventTarget, eventArgument) {
+            if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                theForm.__EVENTTARGET.value = eventTarget;
+                theForm.__EVENTARGUMENT.value = eventArgument;
+                theForm.submit();
+            }
+        }
+        //]]>
+    </script>
+
+
+    <script src="/Tournaments/WebResource.axd?d=mYUd76ADth_HTkogodMUbW6P0fUz_huJw357Xx8ccMb2VLYl2y8OXg2&amp;t=636934614280000000" type="text/javascript"></script>
+
+
+    <script src="/Tournaments/ScriptResource.axd?d=bHs6zfKBsJjwKcUwwqnYTd9cNdhT_Ewu3JPZ7Ai6LXBw3XZqnU2kgg56QGouI2SgSpX4TC2bfNqgV9ksUlBvNQ2&amp;t=245582f9" type="text/javascript"></script>
+    <script src="/Tournaments/ScriptResource.axd?d=1ko80lDbEestsGS4Ndvr6oGe8Ebe6-NQOulcaplu3XKKFPSCakuhUCL9bX4qJotoltUKoTHWN9j6uBS0-1tnZeYvj4dusLnb0&amp;t=245582f9" type="text/javascript"></script>
+    <div>
+
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="61E3761A" />
+    </div>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', ['tctl00$breadcrumbs$UpdatePanel2','','tctl00$SocialMediaPanel$updatePnlSocialMedia','','tctl00$mainContent$pnlTabUpdate','','tctl00$ucHB$updatePnlSiteCatalyst',''], ['ctl00$ScriptManager1',''], [], 600, 'ctl00');
+        //]]>
+    </script>
+    <input type="hidden" name="ctl00$ScriptManager1" id="ctl00_ScriptManager1" />
+    <script type="text/javascript">
+        //<![CDATA[
+        Sys.Application.setServerId("ctl00_ScriptManager1", "ctl00$ScriptManager1");
+        Sys.Application._enableHistoryInScriptManager();
+        //]]>
+    </script>
+
+    <div class="container wrapper">
+
+        <div id="divUstaHeader" class="usta_header">
+            <script src='https://ssl.usta.com/thirdparty/include_siteheader.js.aspx'></script>
+        </div>
+        <div id="Div1">
+
+
+        </div>
+        <a id="ctl00_lnkbutLogIn" class="login" href="javascript:__doPostBack(&#39;ctl00$lnkbutLogIn&#39;,&#39;&#39;)"></a>
+
+        <script type="text/javascript">
+            setNavigationConfig({
+                isLogin: 'False',
+                currentProject: 'tournaments',
+                yearNow: '2019',
+                urls: {
+                    linkJoinUstaUrl: 'https://www.usta.com/membership',
+                    TL_Leagues_AppealInfo: 'http://activesupport.force.com/usta/articles/en_US/Article/Appeal-NTRP-Rating',
+                    TL_MenuLink_USTA_LocalLeagueCoordinators: 'https://www.usta.com/en/home/play/play-as-a-member/national/usta-league--section-coordinators-.html',
+                    TL_MenuLink_USTA_LeaguesNatlChampionships: 'http://www.usta.com/Adult-Tennis/USTA-League/usta_league_national_championships_full_schedule/',
+                    TL_MenuLink_USTA_NTRPRatings: 'https://www.usta.com/en/home/play/play-as-a-member/national/usta-league-faqs.html',
+                    TL_MenuLink_USTA_LeagueTennisRules: 'https://www.usta.com/en/home/organize/program-resources/national/resources---tools.html',
+                    TL_MenuLink_USTA_LeaguesFAQ: 'http://assets.usta.com/assets/1/USTA_Import/dps/usta_master/sitecore_usta/USTA/Document%20Assets/Leagues_and_Tournaments/Leagues/NTRP_FAQ.pdf',
+                    TL_MenuLink_USTA_About_Leagues: 'https://www.usta.com/Adult-Tennis/USTA-League/'
+                },
+                rootUrl: {
+                    dashboard: '/Dashboard/',
+                    tournaments: '/tournaments/',
+                    teamTennis: '/TeamTennis/',
+                    flexLeagues: '/flexleagues/',
+                    leagues: '/leagues/'
+                },
+                userInfo: {
+                    ustaNumberEncrypt: 'YOQLaGylBXE=',
+                    personIdEncrypt: 'YOQLaGylBXE=',
+                    personIdKey: 'pid',
+                    ustaNumberKey: 'unum',
+                    ustaNumber: '0',
+                    userIdKey: 'uid',
+                    userIdEncrypt: 'YOQLaGylBXE=',
+                    ustaNumberUrlParamEncrypt:'YOQLaGylBXE1'
+                }
+            });
+        </script>
+        <div id="favicon"></div>
+        <script type="text/javascript">
+            $("#favicon").load('/Dashboard/Common/TennisLinkRootIcon.html');
+        </script>
+        <div class="TennisLinkTopNewNav">
+            <div id="navheader">
+                <script type="text/html" id="navigation_tmpl">
+                    <div id="navbar">
+                        <div class="new-active-logo"></div>
+                        <ul>
+                            <li data-href="<#=rootUrl.leagues#>" class="<#= currentProject === 'leagues' ? 'default': ''#>">
+                                <div>USTA LEAGUE</div>
+                            </li>
+                            <li data-href="<#=rootUrl.tournaments#>" class="<#= currentProject === 'tournaments' ? 'default': ''#>">
+                                <div>TOURNAMENTS</div>
+                            </li>
+                            <li data-href="<#=rootUrl.teamTennis#>" class="<#= currentProject === 'teamTennis' ? 'default': ''#>">
+                                <div>JUNIOR TEAM TENNIS</div>
+                            </li>
+                            <li data-href="<#=rootUrl.flexLeagues#>" class="<#= currentProject === 'flexLeagues' ? 'default': ''#>">
+                                <div>USTA FLEX LEAGUES</div>
+                            </li>
+                            <li data-href="<#=rootUrl.dashboard#>/Main/Home.aspx">
+                                <div>MY TENNIS</div>
+                            </li>
+                            <# if(!isLogin) { #>
+                            <li class="login">
+                                <div>
+                                    <a href="javascript:logIn();">LOGIN</a>
+                                </div>
+                            </li>
+                            <#}else{#>
+                            <li>
+                                <div>
+                                    <a href="javascript:void(0);" onclick="return logOut()">LOGOUT</a>
+                                </div>
+                            </li>
+                            <#}#>
+                        </ul>
+                    </div>
+                </script>
+            </div>
+            <div class="quickPanel_Error hidden" id="quickPanelErrorContainer"></div>
+            <div class="quickPanel hidden">
+                <div id="q1" class="hidden">
+                    <script type="text/html" id="leagues_tmpl">
+                        <ul>
+                            <li>
+                                <div class="block">
+                                    <span class="subhead">START PLAYING</span>
+                                    <br />
+                                    <br />
+                                    <span class="normalDesciption">Have a USTA Account and a Team #?</span>
+                                    <br />
+                                    <a class="btn" style="width:150px;" href="<#=rootUrl.leagues#>TLRegistration/Registration.aspx">Register for a Team</a>
+                                    <br />
+                                    <span class="normalDesciption">Don\'t have a Team #?</span>
+                                    <a class="btn" style="width:150px;" href="<#=rootUrl.leagues#>Main/FindALeague.aspx">Find a League</a>
+                                    <p style="margin-top:10px;"><a href="<#=urls.linkJoinUstaUrl#>">Join USTA Membership</a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block">
+                                    <span class="subhead">STATS & STANDINGS</span>
+                                    <br />
+                                    <br />
+                                    <img id="ss_icon_simple_search_help" src="/Dashboard/common/Images/help2.png" style="cursor:help;position:relative;left:2px; top:5px;" title="Click for more information" onclick="openSimpleSearchHelp();"></img>
+                                    <span class="normalDesciption">
+                            Enter player name, USTA Account, team # or match #
+                        </span>
+                                    <br />
+                                    <input type="text" id="q_stats-standings-input"/>
+                                    <button id="btnSearchStatsStanding" type="button">Search</button>
+                                    <br />
+                                    <br />
+                                    <a href="<#=rootUrl.leagues#>Main/StatsAndStandings.aspx?SearchType=3">League Advanced Search</a>
+                                    <br />
+                                    <a href="<#=rootUrl.leagues#>Main/StatsAndStandings.aspx?SearchType=0">Championship Advanced Search</a>
+                                    <br />
+                                    <span class="normalDesciption" style="display:inline-block;margin-top:5px;">Need to enter or confirm scores?</span>
+                                    <br />
+                                    <a class="btn" style="width:100px;height:25px;vertical-align:central;line-height:25px;" href="javascript:void(0);" id="btnLinkToRecordAScore">Enter Score</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block">
+                                    <span class="subhead">FIND NTRP RATING INFO</span>
+                                    <br />
+                                    <br />
+                                    <span class="normalDesciption">Enter USTA Account, team # or player name</span>
+                                    <br />
+                                    <input type="text" id="q_ntrp_input"/>
+                                    <button id="btnSearchNTRP" type="button">Search</button>
+                                    <br />
+                                    <br />
+                                    <a href="<#=rootUrl.leagues#>reports/NTRP/AdvancedSearch.aspx">Advanced Search</a>
+                                    <br />
+                                    <a href="javascript:void(0);" id="q_self_rate">Self-Rate</a>
+                                    <br />
+                                    <a href="<#=rootUrl.leagues#>reports/NTRP/FacilitySearch.aspx">Facility Search</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block last">
+                                    <span class="subhead">USTA LEAGUE INFO</span>
+                                    <br />
+                                    <br />
+                                    <a href="<#=urls.TL_MenuLink_USTA_About_Leagues#>">About USTA League</a>
+                                    <br />
+                                    <!--<a href="<#=rootUrl.leagues#>HelpTutorials/Mentor_Terminal.aspx?screen=ab050000.html" onclick="openPopUpSelfRate(this.href); return false;">About Self-Rate</a>
+                                    <br />-->
+                                    <a href="<#=urls.TL_MenuLink_USTA_LeaguesFAQ#>">USTA League FAQ</a>
+                                    <br />
+                                    <a href="<#=urls.TL_MenuLink_USTA_LeagueTennisRules#>">USTA League Tennis Rules</a>
+                                    <br />
+                                    <a href="<#=urls.TL_MenuLink_USTA_NTRPRatings#>">About NTRP Ratings</a>
+                                    <br />
+                                    <a href="<#=urls.TL_MenuLink_USTA_LeaguesNatlChampionships#>">National Championships</a>
+                                    <br />
+                                    <a href="<#=urls.TL_MenuLink_USTA_LocalLeagueCoordinators#>">Local League Coordinators</a>
+                                    <br />
+                                    <a href="<#=urls.TL_Leagues_AppealInfo#>">About Auto-Appeals</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </script>
+                </div>
+                <div id="q2" class="hidden">
+                    <script type="text/html" id="tournament_tmpl">
+                        <ul>
+                            <li>
+                                <div class="block" style="height:240px;">
+                                    <span class="subhead">FIND A TOURNAMENT</span>
+                                    <br />
+                                    <br />
+                                    <span class="normalDesciption">Enter Zip Code, Tournament ID# or Tournament Name</span>
+                                    <br />
+                                    <input type="text" id="q_tournament_name" />
+                                    <br />
+                                    <br />
+                                    <select id="q_tournament_type" style="width: 150px">
+                                        <option value =" :-1" selected="selected">Select an Option</option>
+                                        <option value ="A:0">Adult Sanctioned</option>
+                                        <option value ="A:39">Adult Non-Sanctioned</option>
+                                        <option value ="Y:0">Junior Sanctioned</option>
+                                        <option value ="Y:39">Junior Non-Sanctioned</option>
+                                        <option value ="A:-1">All Adult</option>
+                                        <option value ="Y:-1">All Junior</option>
+                                    </select>
+                                    <br />
+                                    <button id="btnSearchTournament" type="button">Search</button>
+                                    <br />
+                                    <a href="<#=rootUrl.tournaments#>Schedule/Search.aspx">Tournament Advanced Search</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block">
+                                    <span class="subhead">FIND A RANKING</span>
+                                    <br />
+                                    <br />
+                                    <img src="/Dashboard/common/Images/help2.png" style="cursor:help;position:relative;left:2px; top:5px;" title="Click for more information"
+                                         onclick="openTournamentsSimpleSearchHelp();" alt="" />
+                                    <span class="normalDesciption">Enter a USTA Membership # or player name</span>
+                                    <br />
+                                    <input type="text" id="q_ranking"/>
+                                    <button id="btnFindRanking" type="button">Search</button>
+                                    <br />
+                                    <br />
+                                    <a href="<#=rootUrl.tournaments#>Rankings/RankingHome.aspx">Rankings Advanced Search</a>
+                                    <div style="margin-top:10px;">
+                                        <span class="subhead">Find a Youth Progression Level</span>
+                                        <div class="margin-bottom5">
+                                            <span class="normalDesciption">Enter a USTA Account #, TT ID or player name</span>
+                                        </div>
+                                        <div>
+                                            <input id="RatingInput" type="text"/>
+                                            <button id="btnFindRating" type="button">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block">
+                                    <span class="subhead">SHORTCUTS</span>
+                                    <br />
+                                    <br />
+                                    <a href="<#=rootUrl.tournaments#>Schedule/SearchResults.aspx?Action=3&Division=&Category=0&Sanctioned=-1">Currently Registering Online</a>
+                                    <br />
+                                    <a href="<#=rootUrl.tournaments#>Schedule/SearchResults.aspx?Action=7&Division=&Category=0&Sanctioned=-1">Currently Registering</a>
+                                    <br />
+                                    <a href="<#=rootUrl.tournaments#>Schedule/SearchResults.aspx?Action=4&Division=&Category=0&Sanctioned=-1">In Progress</a>
+                                    <br />
+                                    <a href="<#=rootUrl.tournaments#>Schedule/SearchResults.aspx?Action=5&Division=&Category=0&Sanctioned=-1">Just Completed</a>
+                                    <br />
+                                    <a href="<#=rootUrl.tournaments#>Schedule/SearchResults.aspx?Action=6&Division=&Category=0&Sanctioned=-1">All Upcoming</a>
+                                    <br />
+                                    <a href="<#=rootUrl.tournaments#>Schedule/SearchResults.aspx?Action=8&Division=&Category=0&SectionDistrict=NA&Sanctioned=-1&Year=<#=yearNow#>">National Adult Tournaments</a>
+                                    <br />
+                                    <a href="<#=rootUrl.tournaments#>Schedule/SearchResults.aspx?Action=9&Division=&Category=0&SectionDistrict=NJ&Sanctioned=-1&Year=<#=yearNow#>">National Junior Tournaments</a>
+                                    <br />
+                                    <!--<a href="<#=rootUrl.tournaments#>Schedule/SearchResults.aspx?Action=10&Division=&Category=0&SectionDistrict=NU&Sanctioned=-1&Year=<#=yearNow#>">US Open National Playoff</a>
+                                       <br />-->
+                                    <a href="<#=rootUrl.tournaments#>Schedule/SearchResults.aspx?Action=11&Division=&Category=0&SectionDistrict=PC&Sanctioned=-1&Year=<#=yearNow#>">USTA Pro Circuit Events</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block last">
+                                    <span class="subhead">USTA TOURNAMENT INFO</span>
+                                    <br />
+                                    <br />
+                                    <a href="<#=rootUrl.tournaments#>playerregistration/editregistration.aspx">Edit Registration</a>
+                                    <br />
+                                    <!--<a href="#" onclick="return tournamentshelp(\'<#=rootUrl.tournaments#>Help/Help.aspx\')">Help</a>
+                                    <br />-->
+                                    <a href="http://activesupport.force.com/usta/articles/en_US/Article/TDM-Help?utm_source=USTA_Product&utm_medium=direct&utm_campaign=USTA_Product_Help" target="_blank">Tournament Data Manager</a>
+                                    <br />
+                                    <a id="q_tt_link1" href="javascript:void(0);"></a>
+                                    <br />
+                                    <a id="q_tt_link2" href="javascript:void(0);"></a>
+                                    <br />
+                                    <a id="q_tt_link3" href="javascript:void(0);"></a>
+                                    <div>
+                                        <a href="http://www.usta.com/Youth-Tennis/Junior-Competition/JuniorCompetition/?intloc=headersubnav_1_chip_3" target="_blank">
+                                            <img  src="/Dashboard/common/images/USTA_JrTournaments_180.png" style="width:100px;height:45px;"/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </script>
+                </div>
+                <div id="q3" class="hidden">
+                    <script type="text/html" id="team_tennis_tmpl">
+                        <ul>
+                            <li>
+                                <div class="block" style="height:270px;">
+                                    <span class="subhead">START PLAYING</span>
+                                    <br />
+                                    <br />
+                                    <a style="width:150px;" href="<#=rootUrl.teamTennis#>Main/Registration.aspx" class="btn">Have a Team ID?</a>
+                                    <span class="normalDesciption">Click Here to Get Playing!</span>
+                                    <br />
+                                    <br />
+                                    <a style="width:150px;" href="<#=rootUrl.teamTennis#>Main/ProgramSearch.aspx" class="btn">Find a Program</a>
+                                    <span class="normalDesciption">Win or Lose we play as one.</span>
+                                    <br />
+                                    <br />
+                                    <a href="<#=rootUrl.teamTennis#>Main/LearnMore.aspx">Learn More</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block">
+                                    <span class="subhead">FIND RECORDS</span>
+                                    <br />
+                                    <br />
+                                    <span class="normalDesciption">By Player Name:</span>
+                                    <br />
+                                    <input  id="q_tt_first_name" placeholder="First Name" type="text" />
+                                    <br />
+                                    <input id="q_tt_last_name" placeholder="Last Name" type="text"  />
+                                    <button id="btnFindByPlayerName" type="button">Find</button>
+                                    <div style="margin-top:10px;">
+                                        <span class="subhead">Find a Youth Progression Level</span>
+                                        <div class="margin-bottom5">
+                                            <span class="normalDesciption">Enter a USTA Account #, TT ID or player name</span>
+                                        </div>
+                                        <div>
+                                            <input id="RatingInputTT" type="text"/>
+                                            <button id="btnFindRatingTT" type="button">Find</button>
+                                        </div>
+                                    </div>
+                                    <span class="normalDesciption">By Team Name:</span>
+                                    <br />
+                                    <input id="q_tt_team_name" type="text" />
+                                    <button id="btnFindByTeamName" type="button">Find</button>
+                                    <br />
+                                    <a href="javascript:tt_findbyTeamName_help(\'<#=rootUrl.teamTennis#>Main/hlp_TeamSearch.htm\')">Help</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block" style="height:270px;">
+                                    <span class="subhead">STATS & STANDINGS</span>
+                                    <br />
+                                    <br />
+                                    <span class="normalDesciption">USTA/Team Tennis Number:</span>
+                                    <br />
+                                    <input type="text" id="q_tt_personId"/>
+                                    <button id="btnPersonGO" type="button">GO</button>
+                                    <br />
+                                    <span class="normalDesciption">Team Number:</span>
+                                    <br />
+                                    <input type="text" id="q_tt_team_number"/>
+                                    <button id="btnTeamNumberGO" type="button">GO</button>
+                                    <br />
+                                    <span class="normalDesciption">Match Number:</span>
+                                    <br />
+                                    <input type="text" id="q_tt_match_number"/>
+                                    <button id="btnMatchGO" type="button">GO</button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block last">
+                                    <span class="subhead">OPTIONS</span>
+                                    <br />
+                                    <br />
+                                    <a href="<#=rootUrl.teamTennis#>Main/Stats.aspx?Load=AdvSearch&Search=">League Advanced Search</a>
+                                    <br />
+                                    <a href="<#=rootUrl.teamTennis#>Main/Stats.aspx?Load=AdvSearch&Search=">Championship Advanced Search</a>
+                                    <br />
+                                    <a href="<#=rootUrl.teamTennis#>Main/Stats.aspx">View Team Tennis Stats & Standings</a>
+                                    <br />
+                                    <a href="<#=rootUrl.teamTennis#>Main/Stats.aspx">My Teams</a>
+                                    <br />
+                                    <a href="<#=rootUrl.teamTennis#>/Main/CreateOnlineAccount.aspx?Caller=Captain">Become a Coach/Manager</a>
+                                    <br />
+                                    <a href="<#=rootUrl.teamTennis#>/Main/CreateOnlineAccount.aspx?Caller=Coordinator">Become a Coordinator</a>
+                                    <br />
+                                    <a href="<#=rootUrl.teamTennis#>Main/ChampRegistration.aspx">Championship Registration</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </script>
+                </div>
+                <div id="q4" class="hidden">
+                    <script type="text/html" id="flex_league_tmpl">
+                        <ul>
+                            <li>
+                                <div class="block">
+                                    <span class="subhead">FIND A FLEX LEAGUE</span>
+                                    <br />
+                                    <br />
+                                    <p>
+                                        <label class="normalDesciption">Division:</label>
+                                        <select id="q_sel_division">
+                                            <option value="0">ALL</option>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <label class="normalDesciption">State:</label>
+                                        <select id="q_sel_state1">
+                                            <option value="0">ALL</option>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <label class="normalDesciption">Metro Area:</label>
+                                        <select id="q_sel_metro_area1">
+                                            <option value="0">ALL</option>
+                                        </select>
+                                    </p>
+                                    <p><button id="btnFindFlexLeague" type="button">Find</button></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block">
+                                    <span class="subhead">STATS & STANDINGS</span>
+                                    <br />
+                                    <br />
+                                    <p>
+                                        <label class="normalDesciption">Year:</label>
+                                        <select id="q_fl_year">
+                                            <option value="2008">2008</option>
+                                            <option value="2009">2009</option>
+                                            <option value="2010">2010</option>
+                                            <option value="2011">2011</option>
+                                            <option value="2012">2012</option>
+                                            <option value="2013">2013</option>
+                                            <option value="2014">2014</option>
+                                            <option value="2015">2015</option>
+                                            <option value="2016">2016</option>
+                                            <option value="2017">2017</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2019">2019</option>
+                                            <option value="2020">2020</option>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <label class="normalDesciption">State:</label>
+                                        <select id="q_sel_state2">
+                                            <option value="0">ALL</option>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <label class="normalDesciption">Metro Area:</label>
+                                        <select id="q_sel_metro_area2">
+                                            <option value="0">ALL</option>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <label class="normalDesciption">Flex League:</label>
+                                        <select id="q_sel_flex_league">
+                                            <option value="0">-------------------</option>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <label class="normalDesciption">Flight:</label>
+                                        <select id="q_sel_flight">
+                                            <option value="0">-------------------</option>
+                                        </select>
+                                    </p>
+                                    <p><button id="btnViewStatsAndStadings" type="button">View</button></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block">
+                                    <span class="subhead">FIND PLAYER RECORD</span>
+                                    <br />
+                                    <br />
+                                    <p>
+                                        <input type="text" id="q_fl_first_name" placeholder="First Name" style="width:200px"/>
+                                    </p>
+                                    <p>
+                                        <input type="text" id="q_fl_last_name" placeholder="Last Name" style="width:200px"/>
+                                    </p>
+                                    <p>
+                                        <input type="radio" name="q_player_record" checked="checked"/><span class="normalDesciption">Exact Match</span>
+                                    </p>
+                                    <p>
+                                        <input type="radio" name="q_player_record" id="q_name_start_with"/><span class="normalDesciption">Name Starts With</span>
+                                    </p>
+                                    <p><button id="btnFindPlayerRecord" type="button">View</button></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="block last">
+                                    <span class="subhead">OPTIONS</span>
+                                    <br />
+                                    <br />
+                                    <p class="fl-link" data-href="<#=rootUrl.flexLeagues#>PlayerRecord/Registrations.aspx">
+                                        <a href="javascript:void(0);">My Registrations</a>
+                                    </p>
+                                    <p class="fl-link" data-href="<#=rootUrl.flexLeagues#>PlayerRecord/Matches.aspx">
+                                        <a href="javascript:void(0);">My Matches</a>
+                                    </p>
+                                    <p class="fl-link" data-href="<#=rootUrl.dashboard#>Main/ManageAccount.aspx?App=2">
+                                        <a href="javascript:void(0);">My Profile</a>
+                                    </p>
+                                    <p class="fl-link" data-href="<#=rootUrl.flexLeagues#>PlayerToPlayer/FLPlayerAvailability.aspx">
+                                        <a href="javascript:void(0);">My Availability Calendar</a>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </script>
+                </div>
+                <div id="q5" style="display: none">
+                    <script type="text/html" id="my_tennis_tmpl">
+                        <ul>
+                            <li style="width:280px;">
+                                <div class="block">
+                                    <span class="subhead">WELCOME! <#=userName#></span>
+                                    <br />
+                                    <br />
+                                    <img src="<#=imgUrl#>" style="width:60px; height:60px;float:left;margin-right:15px;border:1px solid white;">
+                                    <span class="normalDesciption">
+                            <a href="<#=lnkSection.link#>"><#=lnkSection.text#></a> > <#=location#> 
+                            <br />
+                            Membership #: <#=ustaNumber#>
+                        </span>
+                                    <br />
+                                    <# if(juniorLevel==0 || juniorLevel == null) { #>
+                                    <span class="normalDesciption">NTRP Level:</span>
+                                    <br />
+                                    <div style="clear:both;margin-left:75px;">
+                                        <div class="dyfirst">
+                                            <#=ntrpLevel#>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                        <# if(canUserAppeal) { #>
+                                        <a href="<#=lnkAppealRatingLevel#>" target="_blank">Appeal Rating Level</a>
+                                        <#}#>
+                                        <br />
+                                        <a href="<#=lnkManageAccount#>">Manage Account</a>
+                                        <br />
+                                        <a href="javascript:void(0);"  onclick="logOut();">Logout</a>
+                                    </div>
+                                    <#} else {#>
+                                    <span class="normalDesciption">Jr. Rating Level:</span>
+                                    <br />
+                                    <div style="clear:both;margin-left:75px;">
+                                        <div class="dyfirst">
+                                            <#=juniorLevel#>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                        <br />
+                                        <a href="<#=lnkManageAccount#>">Manage Account</a>
+                                        <br />
+                                        <a href="javascript:void(0);"  onclick="logOut();">Logout</a>
+                                    </div>
+                                    <#}#>
+                                </div>
+                            </li>
+                            <li style="width:320px;">
+                                <div class="block">
+                                    <span class="subhead">MY EVENTS</span>
+                                    <br />
+                                    <br />
+                                    <#if(myEvent.canFindTournament){#>
+                                    <span class="normalDesciption italic">TOURNAMENTS</span>
+                                    <br />
+                                    <#}#>
+                                    <span class="normalDesciption">
+                            <# if(myEvent.tournament) { #>
+                            <a href="<#=myEvent.tournamentLink#>">
+                                <span class="truncate" style="width:150px;display:inline-block;" title="<#=myEvent.tournament#>"><#=myEvent.tournament#></span>
+                            </a>
+                            <span style="position:relative;top:-5px"><#=myEvent.tournamentDate#></span>
+                            <#}else if(myEvent.canFindTournament){#>
+                            <a href="<#=rootUrl.tournaments#>Schedule_New/SearchResults.aspx?Action=3">Find a Tournament</a>
+                            <#}#>
+                        </span>
+                                    <br />
+                                    <#if(myEvent.canFindLeagues){#>
+                                    <span class="normalDesciption italic">USTA LEAGUE</span>
+                                    <br />
+                                    <#}#>
+                                    <# if(myEvent.leagues) { #>
+                                    <a href="<#=myEvent.leaguesLink#>"><span class="truncate" style="width:250px;display:inline-block;" title="<#=myEvent.leagues#>"><#=myEvent.leagues#></span></a>
+                                    <#}else if(myEvent.canFindLeagues){#>
+                                    <span><a href="<#=rootUrl.leagues#>Main/FindALeague.aspx">Find a League</a></span>
+                                    <#}#>
+                                    <br />
+                                    <#if(myEvent.canFindTeamTennis){#>
+                                    <span class="normalDesciption italic">JUNIOR TEAM TENNIS</span>
+                                    <br />
+                                    <#}#>
+                                    <# if(myEvent.teamTennis) { #>
+                                    <a href="<#=myEvent.teamTennisLink#>"><span class="truncate" style="width:250px;display:inline-block;" title="<#=myEvent.teamTennis#>"><#=myEvent.teamTennis#></span></a>
+                                    <#}else if(myEvent.canFindTeamTennis){#>
+                                    <a href="<#=rootUrl.teamTennis#>Main/ProgramSearch.aspx">Find a Program</a>
+                                    <#}#>
+                                    <br />
+                                    <#if(myEvent.canFindFlexLeagues){#>
+                                    <span class="normalDesciption italic">USTA FLEX LEAGUES</span>
+                                    <br />
+                                    <#}#>
+                                    <# if(myEvent.flexLeagues) { #>
+                                    <a href="<#=myEvent.flexLeaguesLink#>"><span class="truncate" style="width:250px;display:inline-block;" title="<#=myEvent.flexLeagues#>"><#=myEvent.flexLeagues#></span></a>
+                                    <#}else if(myEvent.canFindFlexLeagues){#>
+                                    <a href="<#=rootUrl.flexLeagues#>FlightSettings/FLSearch.aspx">Find a Flex League</a>
+                                    <#}#>
+                                </div>
+                            </li>
+                            <li style="width:320px;" style="display: none">
+                                <div class="block last">
+                                    <span class="subhead hidden">RECENTLY VIEWED</span>
+                                    <br />
+                                    <br />
+                                </div>
+                            </li>
+                        </ul>
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div id="divSSOAnnouncement" style="display:none;">
+            <script type="text/html" id="SSOAnnouncement_tmpl">
+                <div style="margin:10px;">
+                    <div id="SSOAnnouncementContent">
+                        <#=Content #>
+                    </div><br />
+                    <div>
+                        <input data-id="Confirmed" name="chkConfirmed" type="checkbox" />
+                        <label for="chkConfirmed"><#=ConfirmText #></label>
+                        <input data-id="OK" type="button" class="button" value="<#=OkText #>" style="margin-left:50px;" />
+                    </div>
+                </div>
+            </script>
+        </div>
+        <div class="TennisLinkWrapper">
+            <div id="tdm-container">
+
+            </div>
+
+
+            <div class="TennisLinkBody">
+                <div id="ctl00_TournamentsBreadcrumbs" class="breadcrumb" style="float: left;">
+                    <a href="http://www.USTA.com">Home</a> &gt;
+                    <a id="ctl00_lnkTennisLink" href="/Dashboard/">TennisLink</a>
+                    &gt;
+                    <a id="ctl00_lnkUSTATournaments" href="/tournaments/">Tournaments</a>
+
+                    <span id="ctl00_breadcrumbs_UpdatePanel2">
+            >
+            <a id="ctl00_breadcrumbs_lnkCurrentSearch" href="../Schedule/SearchResults.aspx?Action=2&amp;Keyword=&amp;TournamentID=&amp;SectionDistrict=&amp;City=&amp;State=&amp;Zip=92129&amp;Month=9&amp;StartDate=&amp;EndDate=&amp;Day=&amp;Year=2019&amp;Division=&amp;Category=&amp;Surface=&amp;OnlineEntry=0&amp;DrawsSheets=0&amp;PageNum=0&amp;UserTime=&amp;Sanctioned=-1&amp;AgeGroup=Y&amp;SkillLevel_EntryLevel=False&amp;SkillLevel_Intermediate=False&amp;SkillLevel_Advanced=False&amp;SearchRadius=-1&amp;QuickSearch=0&amp;OrderBy=3">Current Search</a>
+            > Tournament Home
+        </span>
+
+                </div>
+                <div id="rep" style="float:right;" class="breadcrumb">
+
+                </div>
+
+                <script type="text/javascript" src="../Common/js/ga_social_tracking.js" language="javascript"></script>
+                <div id="ctl00_SocialMediaPanel_updatePnlSocialMedia">
+
+                    <input type="hidden" name="ctl00$SocialMediaPanel$isExistSocialMedia" id="ctl00_SocialMediaPanel_isExistSocialMedia" value="True" />
+                    <div id="ctl00_SocialMediaPanel_pnlSocialMedia">
+
+                        <div style="float: right" >
+                            <div style="float: left; width: 60px">
+                                <div id="Div1"></div>
+                                <div class="fb-like" data-href="https://tennislink.usta.com:443/tournaments/TournamentHome/Tournament.aspx?T=233440" data-send="false" data-layout="button_count" data-width="50" data-show-faces="true"></div>
+                            </div>
+
+                            <div style="float: left; width: 70px">
+                                <a href="http://twitter.com/share" class="twitter-share-button" data-url="https://tennislink.usta.com:443/tournaments/TournamentHome/Tournament.aspx?T=233440" data-count="none" data-via="USTA">Tweet</a>
+                            </div>
+
+                            <div style="float: left; width: 50px">
+
+                                <!-- Place this tag where you want the +1 button to render -->
+                                <div class="g-plusone" data-size="medium" data-annotation="none" data-href="https://tennislink.usta.com:443/tournaments/TournamentHome/Tournament.aspx?T=233440"></div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <script type="text/javascript">
+                    function contentPageLoad() {
+                        var hasIcon = document.getElementById("ctl00_SocialMediaPanel_isExistSocialMedia")
+                        if (hasIcon && hasIcon.value == "True") {
+                            loadSocialMediaAsyn();
+                        }
+                    }
+
+
+                </script>
+
+                <div style="clear: both">
+                </div>
+
+
+
+
+                <div id="DivisionListDialog" title="List of Divisions" style="display: none">
+                    <p>
+                        Boys' 18 Singles<br>Boys' 16 Singles<br>Boys' 14 Singles<br>Boys' 12 Singles<br>Girls' 18 Singles<br>Girls' 16 Singles<br>Girls' 14 Singles<br>Girls' 12 Singles<br>Boys' 10 Singles<br>Girls' 10 Singles<br>
+                    </p>
+                </div>
+
+                <div class="tournament_search">
+                    <h1>
+                        Anaheim Tennis Center Junior Novice Tournament (Level 7)</h1>
+                </div>
+                <div style="clear: both">
+                </div>
+                <div class="tournament">
+                    <div class="tournament_logo">
+                        <strong>Sanctioned By</strong><br>
+                        <IMG src="../images/logos/SouthernCalSect_2c.png" width="112">
+                    </div>
+                    <table class="tournament_info ">
+                        <tr>
+                            <td class="bold_left" style="width: 120px;">Tournament&nbsp;ID:
+                            </td>
+                            <td class="bold_left" style="width: 120px;">Dates:
+                            </td>
+                            <td class="bold_left">Divisions:
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                650023719<br />
+                                <strong>Skill Level:</strong><br />
+                                <span class="tooltipHomepage aslink">Entry Level<span class="classic400 classic2 normal-font-style"><strong>Entry Level</strong><br />Is your child just starting to compete?  Kids can gain experience and confidence by playing multiple matches close to home.</span></span>
+                            </td>
+                            <td>
+                                September 2, 2019
+                            </td>
+                            <td>
+                                <a id="DivisionDetailedList" style="cursor: pointer">
+
+
+                                    <ul class="plain-list noIndent">
+
+                                        <li>
+                                            <strong>
+                                                <em>Entry Level</em>
+                                                Boys&#39; &amp; Girls&#39;
+
+                                                Singles:
+                                            </strong>
+                                            <em>78&#39; Yellow Ball 12-18 </em>
+                                            (<em>NEF</em>)
+
+                                        </li>
+
+                                    </ul>
+
+
+
+                                    <ul class="plain-list noIndent">
+
+                                        <li>
+                                            <strong>
+                                                <em>Orange Level 1</em>
+                                                Boys&#39; &amp; Girls&#39;
+                                                10 and Under
+                                                Singles:
+                                            </strong>
+                                            <em>60&#39; Orange Ball 10 </em>
+                                            (<em>NEF</em>)
+
+                                        </li>
+
+                                    </ul>
+
+
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="tournament_info margin">
+                        <tr>
+                            <td class="white-top">Section:
+                            </td>
+                            <td class="white-top">District:
+                            </td>
+                            <td class="white-top">Surface Type
+                            </td>
+                            <td class="white-top">Draws Posted:
+                            </td>
+                            <td class="white-top">Last Updated:
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                So. California
+                            </td>
+                            <td>
+                                Southern California
+                            </td>
+                            <td>
+                                Hard
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                                9/4/2019 8:12:01 PM (Pacific Time)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="clear">
+                </div>
+                <div id="more_info">
+                    <div class="vns_table_float" style="width: 240px;">
+                        <table id="organization" border="0" cellpadding="0" cellspacing="5" width="100%">
+                            <tr>
+                                <td colspan="2">
+                                    <strong>Organization</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="width: 70px">
+                                        Org Name:
+                                    </div>
+                                </td>
+                                <td align="left">
+                                    <div style="width: 160px">
+                                        Orange County Tennis Academy/Anaheim Tennis Center
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Org Phone:
+                                </td>
+                                <td>
+                                    7149919090
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Org Fax:
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Org Website:
+                                </td>
+                                <td>
+                                    <div style="width: 160px; word-wrap: break-word;">
+                                        <a id="ctl00_mainContent_lnkOrgWebsite" onclick="javascript:return OpenNewURL(&#39;http://&#39;);" href="javascript:void();"></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Org Address:
+                                </td>
+                                <td align="left">
+                                    <div style="width: 160px">
+                                        975 S State College Blvd<br>Anaheim, CA&nbsp;92806
+                                        &nbsp
+                                        <a id="ctl00_mainContent_lnkMap" href="http://www.google.com/maps?daddr=975 S State College Blvd Anaheim, CA 92806" target="_blank">Map</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="vns_table_float" style="width: 260px;">
+                        <table id="contact" border="0" cellpadding="0" cellspacing="5" width="100%">
+                            <tr>
+                                <td colspan="2">
+                                    <strong>Contacts</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="width: 75px">
+                                        Director:
+                                    </div>
+                                </td>
+                                <td>
+                                    Michael  Nelson
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">Director Phone:
+                                </td>
+                                <td>
+                                    (714) 991-9090
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Director Cell:
+                                </td>
+                                <td>
+                                    714-814-8183
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Director Fax:
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Director Email:
+                                </td>
+                                <td>
+                                    <div style="width: 140px; word-wrap: break-word;">
+                                        <a id="ctl00_mainContent_lnkDirectorEmail" href="mailto:mikenelsontennis2@yahoo.com">mikenelsontennis2@yahoo.com</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Referee:
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Referee Phone:
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Referee Email:
+                                </td>
+                                <td>
+                                    <div style="width: 140px; word-wrap: break-word;">
+                                        <a id="ctl00_mainContent_lnkRefereeEmail" href="mailto:"></a>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="vns_table_float" style="width: 260px;">
+                        <table id="entry_info" border="0" cellpadding="0" cellspacing="5" style="line-height: normal; padding: 0px;"
+                               width="100%">
+                            <tr>
+                                <td>
+                                    <div style="width: 70px">
+                                        <strong>Entry Info</strong>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="width: 190px">
+
+
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Entries Closed:
+                                </td>
+                                <td>
+                                    Thursday, August 29, 2019
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Entry Information:
+                                </td>
+                                <td>
+                                    <div style="width: 190px">
+                                        $49.95 per player.
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Checks Payable to:
+                                </td>
+                                <td>
+                                    Anaheim Tennis Center
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Send Checks to:
+                                </td>
+                                <td>
+                                    Anaheim Tennis Center, 975 S. State College Blvd, Anaheim Ca. 92806
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Tournament Website:
+                                </td>
+                                <td>
+                                    <div style="width: 190px; overflow: hidden; word-wrap: break-word;">
+                                        <a id="ctl00_mainContent_lnkTournamentWebsite" OnClick="javascript:alert(&#39;You are now being directed to another Web site. Information displayed on this web-site is not the responsibility of the United States Tennis Association Incorporated.&#39;);"></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- the tabs -->
+                <div id="ctl00_mainContent_pnlTabUpdate">
+
+                    <div id="ctl00_mainContent_UpdateProgress" style="display:none;">
+
+                        <iframe id='Loading_HideSelect'></iframe>
+                        <div id='Loading_window'>
+                            <br />
+                            <img alt="Loading" src="../Common/images/loading.gif" />
+                        </div>
+
+                    </div>
+                    <input type="hidden" name="ctl00$mainContent$controlTabIndex" id="ctl00_mainContent_controlTabIndex" value="0" />
+                    <input type="hidden" name="ctl00$mainContent$hdncontrolTabValue" id="ctl00_mainContent_hdncontrolTabValue" value="0" />
+                    <ul id="ctl00_mainContent_Tabs" class="tabs">
+                        <li id="ctl00_mainContent_liImportantInfo">
+                            <a id="ctl00_mainContent_lnkbutSummaryApproved" class="current" href="javascript:__doPostBack(&#39;ctl00$mainContent$lnkbutSummaryApproved&#39;,&#39;&#39;)">Important Info</a></li>
+                        <li id="ctl00_mainContent_liApplicants">
+                            <a id="ctl00_mainContent_lnkbutSubmitApproval" href="javascript:__doPostBack(&#39;ctl00$mainContent$lnkbutSubmitApproval&#39;,&#39;&#39;)">Applicants</a></li>
+
+
+
+                        <li id="ctl00_mainContent_liCompetitors">
+                            <a id="ctl00_mainContent_lnkbutGeneralInfo" href="javascript:__doPostBack(&#39;ctl00$mainContent$lnkbutGeneralInfo&#39;,&#39;&#39;)">Competitors</a></li>
+
+                        <li id="ctl00_mainContent_liDraws">
+                            <a id="ctl00_mainContent_lnkbutContacts" href="javascript:__doPostBack(&#39;ctl00$mainContent$lnkbutContacts&#39;,&#39;&#39;)">Draws</a></li>
+
+                        <li id="ctl00_mainContent_liResults">
+                            <a id="ctl00_mainContent_lnkbutDates" href="javascript:__doPostBack(&#39;ctl00$mainContent$lnkbutDates&#39;,&#39;&#39;)">Results</a></li>
+                    </ul>
+                    <!-- back-top-top anchor -->
+                    <a name="&&s=1top" id="&&s=1top"></a>
+
+
+
+
+
+
+
+                    <div id="divTopAnchor"></div>
+                    <!-- tab "panes" -->
+                    <div class="panes1">
+
+                        <style type="text/css">
+                            #ctl00_mainContent_ControlTabs0_dgMessages td
+                            {
+                                padding-left:0px;
+                            }
+                            #ctl00_mainContent_ControlTabs0_dgTournamentMessages td
+                            {
+                                padding-left:0px;
+                            }
+                            /*USTA-23802*/
+                            p{
+                                overflow-wrap:break-word;
+                                word-wrap:break-word;
+                                -ms-word-wrap:break-word;
+                            }
+                        </style>
+                        <div class="printed-title" style="display:none" >
+                            Important Info
+                        </div>
+                        <div id="important_info">
+
+                            <table cellspacing="0" cellpadding="0" border="0" id="ctl00_mainContent_ControlTabs0_dgMessages" style="width:560px;border-collapse:collapse;">
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <font  style='font-family:Arial; font-size:12; color:blue; font-weight:normal'>ATTENTION ALL SPECTATORS FROM THE SOUTHERN CALIFORNIA TENNIS ASSOCIATION</font></strong>
+                                        <p>
+                                            (INCLUDES PARENTS, COACHES, RELATIVES, FRIENDS, ETC.)In an effort to promote a more enjoyable and fair experience for all, the following policy is in immediate force and effect, and will diligently and stringently enforced. USTA Southern California (SCTA) has implemented a "ZERO TOLERANCE" policy on improper behavior.1. Any attempt by a spectator to speak to an official regarding a line call or other ruling during match play will be cause for immediate removal from the playing area and, if warranted, from the premises.<br>2. Any spectator behavior deemed unacceptable towards a player, other spectator or staff member will be cause for immediate removal from the playing area or the entire premises. If said behavior is directed towards a player, either before, during or after a tournament, it will result in AN AUTOMATIC AND IMMEDIATE SUSPENSION OF THAT SPECTATOR'S RIGHT TO ATTEND USTA SOUTHERN CALIFORNIA GRIEVANCE AND SPORTSMANSHIP COMMITTEE.<br>3. Refusal to adhere to removal request will trigger immediate enforcement of the point penalty system against the player with whom the spectator is involved (per point penalty system regulations), including possible immediate default.<br>4. The On-Site Official is the SOLE judge regarding unacceptable behavior.<br>Umpire/Spectator communication, whether it be about a ruling or any other facet of a tennis event is prohibited while a match is in progress. Being a parent, coach, etc. does not endow special privileges. With the only exception of the right to move their own child from competition at any time, a parent or coach is merely a spectator.
+
+                                        </p>
+                                    </td>
+                                </tr><tr>
+                                <td>
+                                    <strong>
+                                        <font  style='font-family:Arial; font-size:12; color:red; font-weight:normal'>TIMES FOR  ALL DIVISIONS ( PLEASE ARRIVE 20 MINUTES EARLY)</font></strong>
+                                    <p>
+                                        BOYS' 16 SINGLES MONDAY 11 AM<br>BOYS' 14 SINGLES MONDAY 11 AM<br>BOYS'12 SINGLES MONDAY  11 AM<br>BOYS' 10 SINGLES MONDAY 1:30 PM<br>GIRLS' 16 SINGLES MONDAY 11AM<br>GIRLS' 14 SINGLES MONDAY 11 AM<br>GIRLS' 12 SINGLES MONDAY 11 AM<br>GIRLS' 10 SINGLES MONDAY 1:30 PM
+
+                                    </p>
+                                </td>
+                            </tr><tr>
+                                <td>
+                                    <strong>
+                                        <font  style='font-family:Arial; font-size:12; color:red; font-weight:normal'>SITE :ANAHEIM TENNIS CENTER </font></strong>
+                                    <p>
+                                        975 S. STATE COLLEGE BLVD,ANAHEIM CA. 92806<br><br><br>714-991-9090<br><br>
+
+                                    </p>
+                                </td>
+                            </tr><tr>
+                                <td>
+                                    <strong>
+                                        <font  style='font-family:Arial; font-size:12; color:red; font-weight:normal'>IMPORTANT MESSAGE</font></strong>
+                                    <p>
+                                        THE ANAHEIM TENNIS CENTER IS UNDER REMODEL THE ENTRANCE TO THE CLUB IS FROM THE PARKING LOT.
+
+                                    </p>
+                                </td>
+                            </tr><tr>
+                                <td>
+                                    <strong>
+                                        <font  style='font-family:Arial; font-size:12; color:black; font-weight:normal'>MATCH FORMAT</font></strong>
+                                    <p>
+                                        1 SHORT SET TO 5, NO AD SCORING,  FOR ALL SINGLES DIVISIONS EXCEPT BOYS' AND GIRLS' 10 and 12 DIVISIONS. <br>BOYS' AND GIRLS' 10 DIVISIONS  PLAY A SHORT SET, FIRST TO 4 GAMES NO AD,
+
+                                    </p>
+                                </td>
+                            </tr>
+                            </table>
+
+
+                            <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                            "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+                            <html xmlns="http://www.w3.org/1999/xhtml">
+                            <head>
+                                <meta name="generator" content=
+                                        "HTML Tidy for Windows (vers 14 October 2008), see www.w3.org" />
+                                <title></title>
+                            </head>
+                            <body>
+                            <strong>Notes</strong><br />
+                            <p><br />
+                                Novice tournaments have a round robin format. It takes 3 hours to
+                                play to completion.</p>
+                            </body>
+                            </html>
+
+
+
+                            <strong>Player Selection Type</strong><br><p>No Selection Process. All registered players will be selected.</p>
+                            <strong>Entry Type</strong><br><p>Entry to this tournament is open to all USTA members.  Entries must be submitted by Thursday, August 29, 2019 11:59:00 PM Pacific Time. Only USTA members can register online if available.</p>
+                            <strong>Quick Reference</strong><br><p>In the future, you can jump straight to this tournament by entering the tournament identification number: <font color='red'>650023719</font> from the searchable schedule homepage.</p>
+
+                            <p>
+
+                            </p>
+                            <p>
+                                <a href="../Help/DivisionAbbreviation.aspx" target="_blank">Division and Draw Type Abbreviations
+                                    Legend</a>
+                            </p>
+                            <p>
+                                To use TennisLink, cookies must be enabled in the user's browser. For more information,
+                                please go to your browser's help menu.
+                            </p>
+                        </div>
+                        <ul id="edit_registration">
+                            <li class="head">Edit Registration</li>
+                            <li><a href="../playerregistration/Payfordoubles.aspx">Pay for 1/2 Dbl Team Registration</a></li>
+                            <li><a href="../playerregistration/Registerpartner.aspx">Indicate Doubles Partner</a></li>
+                            <li><a href="../playerregistration/Withdraw.aspx">Withdraw</a></li>
+                            <li><a href="../playerregistration/LocateConfirmation.aspx?T=233440">
+                                Locate Confirmation No.</a></li>
+                            <li><a href="../playerregistration/changesitepreference.aspx">Change Site Preference</a></li>
+                            <li><a href="../playerregistration/GetExternalRanking.aspx">Update Non-USTA Rankings</a></li>
+                            <li><a href="../playerregistration/UpdateTShirt.aspx">Update T-Shirt Size</a></li>
+                        </ul>
+                        <div class="clear">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <script>
+                    function SetCookieValueByName(strName, strValue, intExpireDays) {
+                        var dtExpire = new Date();
+                        dtExpire.setDate(dtExpire.getDate() + intExpireDays);
+                        var sValue = escape(strValue) + ((intExpireDays == null) ? "" : "; expires=" + dtExpire.toUTCString());
+                        document.cookie = strName + "=" + sValue;
+                    }
+
+                    function GetCookieValueByName(strName) {
+                        var iIndex, sName, sValue, arrCookies = document.cookie.split(";");
+                        for (iIndex = 0; iIndex < arrCookies.length; iIndex++) {
+                            sName = arrCookies[iIndex].substr(0, arrCookies[iIndex].indexOf("="));
+                            sValue = arrCookies[iIndex].substr(arrCookies[iIndex].indexOf("=") + 1);
+                            sName = sName.replace(/^\s+|\s+$/g, "");
+                            if (sName == strName) {
+                                return unescape(sValue);
+                            }
+                        }
+                        return "";
+                    }
+
+                    function handleTeamDrawFlightSelection() {
+                        var selectedFlightId = $("#ctl00_mainContent_ControlTabs9_ddlFlight").val();
+
+                        if ((!isNaN(selectedFlightId)) && selectedFlightId != "") {
+                            $('[data-drawClass="hidden"]').hide()
+
+                            if (selectedFlightId == "-1") {
+                                $("#divDrawThumbnail").show();
+                            } else {
+                                $("#divDrawDetailsFlight_" + selectedFlightId).show();
+                            }
+                        }
+                    }
+
+                    function updateTopAnchorLink(tabIndex, ddlSelectedIndex) {
+                        var point = "&&s=" + tabIndex + "top" + ddlSelectedIndex;
+                        $("#divTopAnchor").html("<a id=" + point + "/>");
+                        $("a[href^='#&&s=']").filter(":contains('top')").each(function () {
+                            $(this).attr("href", "#" + point);
+                        });
+                    }
+
+                    function adjustTeamDrawDetailWidthsForMobilizer() {
+                        $(".divMatchBlock").css("min-width", "80%");
+                        $(".divMatchBlock .divLeft").css("min-width", "50%");
+                        $(".divMatchBlock .divRight").css("min-width", "50%");
+                        $(".divMatchBlock .divAutoEllipsisTeamName").css("width", "95%");
+                    }
+
+                    //this should only affect mobilizer
+                    $(function () {
+                        handleTeamDrawFlightSelection();
+
+                        adjustTeamDrawDetailWidthsForMobilizer();
+
+                        $("#ctl00_mainContent_ControlTabs9_ddlFlight").on('change', function (e) {
+                            handleTeamDrawFlightSelection();
+                        })
+                    });
+
+                    //USTA-20221
+                    var tmpSearchHtml = $(".tournament_search h1").html();
+                    if (tmpSearchHtml != null) {
+                        RunTLWidgetTracking('Tournament Home - ' + tmpSearchHtml.trim(), window.location.href);
+                    }
+
+                    var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+                    //added for browser back
+                    prm.add_endRequest(function () {
+                        var tabValue = $("#ctl00_mainContent_hdncontrolTabValue").val();
+                        if ($(".TournamentHome_SpecialCSS_TopAnchor").length == 0) {
+                            $("#divTopAnchor").empty();
+                            return;
+                        }
+                        var ddlSelectedIndex = $(".TournamentHome_SpecialCSS_TopAnchor").prop("selectedIndex");
+
+                        if ($("#divTopAnchor").html() == "") {
+                            updateTopAnchorLink(tabValue, ddlSelectedIndex);
+                        }
+
+                        $(".TournamentHome_SpecialCSS_TopAnchor").bind("change", function () {
+                            updateTopAnchorLink(tabValue, ddlSelectedIndex);
+                        });
+                    });
+
+                    prm.add_endRequest(function () {
+
+                        handleTeamDrawFlightSelection();
+
+                        $("#ctl00_mainContent_ControlTabs9_ddlFlight").unbind('change');
+                        $("#ctl00_mainContent_ControlTabs9_ddlFlight").on('change', function (e) {
+                            handleTeamDrawFlightSelection();
+                        });
+                    });
+                </script>
+
+            </div>
+        </div>
+
+        <div id="ctl00_pnlTennisLinkRightRail" class="TennisLinkRightRail">
+
+            <div class="cmsTowerAd">
+                <div style='display:block; margin-left: -5px;'><iframe src='https://tlwidget.usta.com/TLWidget/Widget?widgetType=tennislink&app=Tournaments' frameborder='0' class='personalization-widget' style='width: 169px; height: 660px; margin: 0px; padding: 0px; border: 0px; display: block;'></iframe></div>
+            </div>
+
+        </div>
+
+        <div style="background:#003871; clear:both">
+            <div id="ctl00_divTennisLinkFooter" class="container TennisLinkFooter">
+                <!--Chris Redirect URL-->
+
+                <!--Chris End-->
+                <!--Google Ads bottom Begins-->
+
+                <script type='text/javascript'>
+                    var googletag = googletag || {};
+                    googletag.cmd = googletag.cmd || [];
+                    (function () {
+                        var gads = document.createElement('script');
+                        gads.async = true;
+                        gads.type = 'text/javascript';
+                        var useSSL = 'https:' == document.location.protocol;
+                        gads.src = (useSSL ? 'https:' : 'http:') +
+                            '//www.googletagservices.com/tag/js/gpt.js';
+                        var node = document.getElementsByTagName('script')[0];
+                        node.parentNode.insertBefore(gads, node);
+                    })();
+                </script>
+                <script type='text/javascript'>
+                    googletag.cmd.push(function () {
+                        googletag.defineSlot('/5681/USTA/Tournaments/300x250_Left', [300, 250], 'Tournaments_300x250_Left').addService(googletag.pubads());
+                        googletag.defineSlot('/5681/USTA/Tournaments/300x250_Middle', [300, 250], 'Tournament_300x250_Middle').addService(googletag.pubads());
+                        googletag.defineSlot('/5681/USTA/Tournaments/300x250_Right', [300, 250], 'Tournaments_300x250_Right').addService(googletag.pubads());
+                        googletag.enableServices();
+                    });
+                </script>
+
+                <style>
+                    #Tournaments_300x250_Left
+                    {
+                        float:left;
+                        padding: 10px 0 0 0px;
+                    }
+                    #Tournament_300x250_Middle, #Tournaments_300x250_Right
+                    {
+                        float:left;
+                        padding: 10px 0 0 50px;
+                    }
+                </style>
+
+                <!-- USTA/Tournaments/300x250_Left -->
+                <div id='Tournaments_300x250_Left' style='width:300px; height:250px;'>
+                    <script type='text/javascript'>
+                        googletag.cmd.push(function () { googletag.display('Tournaments_300x250_Left'); });
+                    </script>
+                </div>
+
+                <!-- USTA/Tournaments/300x250_Middle -->
+                <div id='Tournament_300x250_Middle' style='width:300px; height:250px;'>
+                    <script type='text/javascript'>
+                        googletag.cmd.push(function () { googletag.display('Tournament_300x250_Middle'); });
+                    </script>
+                </div>
+
+                <!-- USTA/Tournaments/300x250_Right -->
+                <div id='Tournaments_300x250_Right' style='width:300px; height:250px;'>
+                    <script type='text/javascript'>
+                        googletag.cmd.push(function () { googletag.display('Tournaments_300x250_Right'); });
+                    </script>
+                </div>
+
+                <!--Google Ads bottom Ends-->
+
+            </div>
+            <div class="container USTAFooter">
+
+                <script src='https://ssl.usta.com/thirdparty/include_sitefooter.js.aspx'></script>
+
+                <span id="ctl00_lblBuildNumber" style="color:#477DC6;">Code 1.10.000.7229</span>
+
+                <span id="ctl00_lblIP" style="color:#477DC6;">::1</span>
+            </div>
+        </div>
+    </div>
+    <!-- Start Quantcast tag --> <script type="text/javascript"> _qoptions={ qacct:"p-74uD-kgmvp83w" }; </script> <script type="text/javascript" src="//secure.quantserve.com/quant.js"></script> <noscript> <img src="//secure.quantserve.com/pixel/p-74uD-kgmvp83w.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/> </noscript> <!-- End Quantcast tag -->
+    <div id="ctl00_ucHB_newSiteCatalyst">
+
+        <!-- Note this gives a link to loads up the Google and Quandcast links -->
+        <!-- Start Quantcast tag --> <script type="text/javascript"> _qoptions={ qacct:"p-74uD-kgmvp83w" }; </script> <script type="text/javascript" src="//secure.quantserve.com/quant.js"></script> <noscript> <img src="//secure.quantserve.com/pixel/p-74uD-kgmvp83w.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/> </noscript> <!-- End Quantcast tag -->
+
+
+        <!-- SiteCatalyst code version: H.21.
+        Copyright 1996-2010 Adobe, Inc. All Rights Reserved
+        More info available at http://www.omniture.com -->
+        <script language = "javascript" type="text/javascript">
+            var sEnvironment = "Production";
+        </script>
+
+        <div id="ctl00_ucHB_updatePnlSiteCatalyst">
+
+
+            <!-- Active SiteCatalyst code version: H.21. -->
+            <script language="JavaScript" type="text/javascript" src="/Tournaments/common/js/s_code_tan.js" ></script>
+            <!--   -->
+            <!-- Active End SiteCatalyst code version: H.21. -->
+
+            <!-- USTA SiteCatalyst code version: H.21. -->
+            <script language="JavaScript" type="text/javascript" src="/Tournaments/common/js/s_code.js"></script>
+            <!--      -->
+            <!-- USTA End SiteCatalyst code version: H.21. -->
+
+            <script language = "javascript" type="text/javascript">
+
+                function site_catalyst() {
+                    try {
+                        var pageName = $("#ctl00_ucHB_hfPagename").val();
+                        var channel = $("#ctl00_ucHB_hfchannel").val();
+                        var prop1 =  $("#ctl00_ucHB_hfprop1").val();
+                        var prop2 =  $("#ctl00_ucHB_hfprop2").val();
+                        var prop3 =  $("#ctl00_ucHB_hfprop3").val();
+                        var prop4 =  $("#ctl00_ucHB_hfprop4").val();
+                        var prop5 =  $("#ctl00_ucHB_hfprop5").val();
+                        var prop6 =  $("#ctl00_ucHB_hfprop6").val();
+                        var prop7 =  $("#ctl00_ucHB_hfprop7").val();
+                        var prop8 =  $("#ctl00_ucHB_hfprop8").val();
+                        var hier1 =  $("#ctl00_ucHB_hfhier1").val();
+                        var prop14 = $("#ctl00_ucHB_hfprop14").val();
+                        var prop43 = $("#ctl00_ucHB_hfprop43").val();
+                        var prop58 = $("#ctl00_ucHB_hfprop58").val();
+                        var prop23 = $("#ctl00_ucHB_hfprop23").val();
+                        var event31 = $("#ctl00_ucHB_hfevent31").val();
+
+                        s.pageName = pageName;
+                        s.channel = channel;
+                        s.prop1 = prop1;
+                        s.prop2 = prop2;
+                        s.prop3 = prop3;
+                        s.prop4 = prop4;
+                        s.prop5 = prop5;
+                        s.prop6 = prop6;
+                        s.prop7 = prop7;
+                        s.prop8 = prop8;
+                        s.hier1 = hier1;
+                        s.prop14 = prop14;
+                        s.prop43 = prop43;
+                        s.prop58 = prop58;
+
+                        s.eVar17 = s.channel;
+                        s.eVar1 = s.prop1;
+                        s.eVar2 = s.prop2;
+                        s.eVar3 = s.prop3;
+                        s.eVar4 = s.prop4;
+                        s.eVar5 = s.prop5;
+                        s.eVar6 = s.prop6;
+                        s.eVar7 = s.prop7;
+                        s.eVar8 = s.prop8;
+                        s.eVar14 = s.prop14;
+                        s.eVar43 = s.prop43;
+                        s.eVar58 = s.prop58;
+                        if (prop23 != null && prop23 != "") {
+                            s.prop23 = prop23;
+                            s.eVar23 = s.prop23;
+                            s.products = ';;;;event31=' + event31;
+                            s_tan.prop23 = prop23;
+                            s_tan.eVar23 = s_tan.prop23;
+                            s_tan.products = ';;;;event31=' + event31;
+                        }
+                        var s_code = s.t(); if (s_code) document.write(s_code);
+
+                        s_tan.pageName = pageName;
+                        s_tan.channel = channel;
+                        s_tan.prop1 = prop1;
+                        s_tan.prop2 = prop2;
+                        s_tan.prop3 = prop3;
+                        s_tan.prop4 = prop4;
+                        s_tan.prop5 = prop5;
+                        s_tan.prop6 = prop6;
+                        s_tan.prop7 = prop7;
+                        s_tan.prop8 = prop8;
+                        s_tan.hier1 = hier1;
+                        s_tan.prop14 = prop14;
+                        s_tan.prop43 = prop43;
+                        s_tan.prop58 = prop58;
+
+                        s_tan.eVar17 = s_tan.channel;
+                        s_tan.eVar1 = s_tan.prop1;
+                        s_tan.eVar2 = s_tan.prop2;
+                        s_tan.eVar3 = s_tan.prop3;
+                        s_tan.eVar4 = s_tan.prop4;
+                        s_tan.eVar5 = s_tan.prop5;
+                        s_tan.eVar6 = s_tan.prop6;
+                        s_tan.eVar7 = s_tan.prop7;
+                        s_tan.eVar8 = s_tan.prop8;
+                        s_tan.eVar14 = s_tan.prop14;
+                        s_tan.eVar43 = s_tan.prop43;
+                        s_tan.eVar58 = s_tan.prop58;
+                        var s_code = s_tan.t();
+                        if (s_code) document.write(s_code);
+
+                        //The code below would cause problem on IE, see http://jira.active.com/jira/browse/TL-13341
+                        //if (navigator.appVersion.indexOf('MSIE') >= 0) document.write(unescape('%3C') + '\!-' + '-')
+                    } catch (e) { }
+                }
+                $(function() { site_catalyst(); });
+            </script>
+
+
+            <!-- End SiteCatalyst code version: H.21. -->
+
+            <input type="hidden" name="ctl00$ucHB$hfPagename" id="ctl00_ucHB_hfPagename" value="tlink:tourn:search results:tournament home page" />
+            <input type="hidden" name="ctl00$ucHB$hfchannel" id="ctl00_ucHB_hfchannel" value="tlink" />
+            <input type="hidden" name="ctl00$ucHB$hfprop1" id="ctl00_ucHB_hfprop1" value="tlink:tourn" />
+            <input type="hidden" name="ctl00$ucHB$hfprop2" id="ctl00_ucHB_hfprop2" value="tlink:tourn:search results" />
+            <input type="hidden" name="ctl00$ucHB$hfprop3" id="ctl00_ucHB_hfprop3" value="tlink:tourn:search results" />
+            <input type="hidden" name="ctl00$ucHB$hfprop4" id="ctl00_ucHB_hfprop4" />
+            <input type="hidden" name="ctl00$ucHB$hfprop5" id="ctl00_ucHB_hfprop5" />
+            <input type="hidden" name="ctl00$ucHB$hfprop6" id="ctl00_ucHB_hfprop6" value="tournament home page" />
+            <input type="hidden" name="ctl00$ucHB$hfprop7" id="ctl00_ucHB_hfprop7" />
+            <input type="hidden" name="ctl00$ucHB$hfprop8" id="ctl00_ucHB_hfprop8" value="tennislink.usta.com" />
+            <input type="hidden" name="ctl00$ucHB$hfprop14" id="ctl00_ucHB_hfprop14" value="not logged in" />
+            <input type="hidden" name="ctl00$ucHB$hfprop43" id="ctl00_ucHB_hfprop43" value="Public" />
+            <input type="hidden" name="ctl00$ucHB$hfhier1" id="ctl00_ucHB_hfhier1" value="tlink:tourn:search results" />
+            <input type="hidden" name="ctl00$ucHB$hfprop58" id="ctl00_ucHB_hfprop58" value="any" />
+            <input type="hidden" name="ctl00$ucHB$hfprop23" id="ctl00_ucHB_hfprop23" />
+            <input type="hidden" name="ctl00$ucHB$hfevent31" id="ctl00_ucHB_hfevent31" />
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <script type="text/javascript">
+
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+        function EndRequestHandler(sender, args) {
+
+            /*reset default button */
+            __defaultFired = false;
+
+            $(document).ready(function() {
+                $("a[rel]").overlay({ mask: '#333', fixed: false });
+            });
+
+            $(function() {
+                if (typeof site_catalyst == "function") {
+                    site_catalyst();
+                }
+            });
+        }
+    </script>
+
+
+    <script type="text/javascript">
+        //<![CDATA[
+        $(function() { $(".iframe").colorbox({ iframe: true, width: "880", height: "510" }); });(function() {var fn = function() {$get("ctl00_ScriptManager1_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();Sys.Application.add_init(function() {
+            $create(Sys.UI._UpdateProgress, {"associatedUpdatePanelId":"ctl00_mainContent_pnlTabUpdate","displayAfter":500,"dynamicLayout":true}, null, null, $get("ctl00_mainContent_UpdateProgress"));
+        });
+        //]]>
+    </script>
+</form>
+
+
+<iframe id="ifrmSyncUSTASSO" src="https://tennislink.usta.com/Dashboard/Common/SyncUSTASSO.aspx" width="0" height="0"></iframe>
+</body>
+</html>

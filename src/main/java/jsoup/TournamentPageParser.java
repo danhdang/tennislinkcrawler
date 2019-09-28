@@ -14,13 +14,14 @@ public class TournamentPageParser {
     public void parsePage(String tournamentGoLinkId, ParsedTournament parsedTournament) {
         try {
             Document document = Jsoup.connect("https://tennislink.usta.com/tournaments/TournamentHome/Tournament.aspx?T=" + tournamentGoLinkId).get();
-            parseDocument(document, parsedTournament);
+            parseDocument(document.outerHtml(), parsedTournament);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void parseDocument(Document document, ParsedTournament parsedTournament) {
+    public void parseDocument(String html, ParsedTournament parsedTournament) {
+        Document document = Jsoup.parse(html);
         Element orgTable = document.getElementById("organization");
         Elements orgTableRows = orgTable.getElementsByTag("tr");
 

@@ -8,6 +8,7 @@ import org.jsoup.select.Elements;
 import parsedresult.ParsedResult;
 import parsedresult.ParsedTournament;
 
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.IntFunction;
