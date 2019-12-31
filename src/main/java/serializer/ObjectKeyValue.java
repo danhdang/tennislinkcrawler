@@ -3,6 +3,7 @@ package serializer;
 public class ObjectKeyValue {
     private String key;
     private String value;
+    private Class<?> propertyType;
 
     public String getKey() {
         return key;
@@ -18,5 +19,13 @@ public class ObjectKeyValue {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public Class<?> getPropertyType() {
+        return propertyType;
+    }
+
+    public void setPropertyType(Class<?> propertyType) {
+        this.propertyType = propertyType;
     }
 }

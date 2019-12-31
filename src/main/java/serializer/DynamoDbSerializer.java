@@ -22,9 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -101,18 +99,56 @@ public class DynamoDbSerializer {
         result.getParsedTournamentList().stream().forEach(tournament -> {
             Item tournamentItem = new Item().withPrimaryKey("tournamentId",tournament.getTournamentId());
 
-            List<ObjectKeyValue> objectPropsKeyValues = getObjectPropsKeyValues(tournament);
-            for (ObjectKeyValue kv : objectPropsKeyValues ) {
-                if(kv.getValue() != null && StringUtils.isNotEmpty(kv.getValue())) {
-                    tournamentItem.withString(kv.getKey(), kv.getValue());
+            List<PropertyDescriptor> propertyDescriptors = getPropertyDescriptors(tournament);
+            propertyDescriptors.forEach(pd -> {
+
+                String name = pd.getName();
+                Class<?> propertyType = pd.getPropertyType();
+                Method getter = pd.getReadMethod();
+                Object value = null;
+                try {
+                    value = getter.invoke(tournament);
+                } catch (IllegalAccessException e) {
+                    log.error(e.toString());
+                } catch (InvocationTargetException e) {
+                    log.error(e.toString());
                 }
-            }
+
+                if(name.contains("tournamentId")) {
+                    return;
+                }
+
+                if(value == null) {
+                    return;
+                }
+
+                Class<?> arrayClass = String[].class;
+                if(propertyType.getName().equalsIgnoreCase(arrayClass.getName())) {
+                    String[] stringArray = (String[]) value;
+                    if(stringArray.length > 0) {
+                        tournamentItem.withStringSet(name, new HashSet<>(Arrays.asList(stringArray)));
+                    }
+                }
+
+                Class<?> integerClass = Integer.class;
+                if(propertyType.getName().equalsIgnoreCase(integerClass.getName())) {
+                    tournamentItem.withInt(name, (Integer) value);
+                }
+
+                Class<?> stringClass = String.class;
+                if(propertyType.getName().equalsIgnoreCase(stringClass.getName())) {
+                    String stringVal = (String) value;
+                    if(StringUtils.isNotEmpty(stringVal)) {
+                        tournamentItem.withString(name, stringVal);
+                    }
+                }
+            });
 
             tournamentTable.putItem(tournamentItem);
         });
     }
 
-    public List<ObjectKeyValue> getObjectPropsKeyValues(Object bean) {
+    public List<PropertyDescriptor> getPropertyDescriptors(Object bean) {
         BeanInfo info = null;
         try {
             info = Introspector.getBeanInfo(bean.getClass(), Object.class);
@@ -123,22 +159,6 @@ public class DynamoDbSerializer {
         PropertyDescriptor[] props = info.getPropertyDescriptors();
         return Arrays.stream(props)
                 .filter(p -> !p.getName().contains("tournamentId"))
-                .map(pd -> {
-            String name = pd.getName();
-            Method getter = pd.getReadMethod();
-            Object value = null;
-            try {
-                value = getter.invoke(bean);
-            } catch (IllegalAccessException e) {
-                log.error(e.toString());
-            } catch (InvocationTargetException e) {
-                log.error(e.toString());
-            }
-
-            ObjectKeyValue kv = new ObjectKeyValue();
-            kv.setKey(name);
-            kv.setValue(value == null ? null : value.toString());
-            return kv;
-        }).collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 }

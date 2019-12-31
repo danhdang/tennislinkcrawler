@@ -5,8 +5,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import parsedresult.ParsedResult;
 import parsedresult.ParsedTournament;
+import selenium.SeleniumCrawler;
 
 import java.net.URLEncoder;
 import java.util.List;
@@ -18,6 +21,7 @@ import java.util.regex.Pattern;
 public class TournamentSearchResultParser {
 
     ParsedResult parsedResult = new ParsedResult();
+    private static final Logger log = LoggerFactory.getLogger(TournamentSearchResultParser.class);
 
     public ParsedResult parseSearchResult(String html) {
         Document document = Jsoup.parse(html);
@@ -58,8 +62,8 @@ public class TournamentSearchResultParser {
             tournament.setCityState(cityState.get().text().trim());
         }
 
-        Element mapElement = webElement.getElementsByTag("a").first();
-        tournament.setGoogleMap(mapElement.attr("href").trim());
+//        Element mapElement = webElement.getElementsByTag("a").first();
+//        tournament.setGoogleMap(mapElement.attr("href").trim());
 
     }
 
@@ -83,22 +87,20 @@ public class TournamentSearchResultParser {
             if(levelMatcher.matches()) {
                 tournament.setTournamentLevel(Integer.parseInt(levelMatcher.group("level")));
             }
-
-            Matcher levelMatcher2 = Pattern.compile("L(?<level>\\d+)\\s+.*", Pattern.CASE_INSENSITIVE).matcher(linkText);
-            if(levelMatcher2.matches()) {
-                tournament.setTournamentLevel(Integer.parseInt(levelMatcher2.group("level")));
-            }
-
-
         }
 
-        Element skillLevelElement = webElement.select(".tooltip2").first();
-        if(skillLevelElement != null) {
-            Optional<TextNode> skillLevelTextNode = skillLevelElement.textNodes().stream().findFirst();
-            if(skillLevelTextNode.isPresent()) {
-                tournament.setSkillLevel(skillLevelTextNode.get().text().trim());
-            }
+        Matcher levelMatcher2 = Pattern.compile("L(?<level>\\d+)\\s+.*", Pattern.CASE_INSENSITIVE).matcher(linkText);
+        if(levelMatcher2.matches()) {
+            tournament.setTournamentLevel(Integer.parseInt(levelMatcher2.group("level")));
         }
+
+//        Element skillLevelElement = webElement.select(".tooltip2").first();
+//        if(skillLevelElement != null) {
+//            Optional<TextNode> skillLevelTextNode = skillLevelElement.textNodes().stream().findFirst();
+//            if(skillLevelTextNode.isPresent()) {
+//                tournament.setSkillLevel(skillLevelTextNode.get().text().trim());
+//            }
+//        }
 
         Elements divisionElements = webElement.select("ul.plain-list.compact");
         String[] divisions = divisionElements.stream().map(d -> cleanDivisionText(d.text())).toArray(String[]::new);

@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class CrawlerTest {
 
     @Test
-    public void TestRun() throws IOException {
+    public void TestRun() {
         SeleniumCrawler crawler = new SeleniumCrawler();
         ParsedResult parsedResult = crawler.Run();
         DynamoDbSerializer serializer = new DynamoDbSerializer();

@@ -23,12 +23,12 @@ public class DynamoDbSerializerTest {
         tournament1.setTournamentId("123123123123");
         tournament1.setDirectorCell("671-123-1231");
         tournament1.setDirectorName("Mr. Director");
+        tournament1.setDivisions(new String[] { "division 1", "division 2"});
         tournaments.add(tournament1);
 
         result.setParsedTournamentList(tournaments);
 
         DynamoDbSerializer serializer = new DynamoDbSerializer();
-        serializer.initializeTable();
         serializer.serializeParsedResult(result);
     }
 

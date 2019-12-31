@@ -6,7 +6,7 @@ public class ParsedTournament {
     private String tournamentName;
     private String tournamentId;
     private Integer tournamentLevel;
-    private String skillLevel;
+    private String[] skillLevel;
     private String tournamentDates;
     private String[] divisions;
     private String section;
@@ -223,11 +223,11 @@ public class ParsedTournament {
         this.tournamentWebsite = tournamentWebsite;
     }
 
-    public String getSkillLevel() {
+    public String[] getSkillLevel() {
         return skillLevel;
     }
 
-    public void setSkillLevel(String skillLevel) {
+    public void setSkillLevel(String[] skillLevel) {
         this.skillLevel = skillLevel;
     }
 

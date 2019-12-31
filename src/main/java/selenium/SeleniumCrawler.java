@@ -72,5 +72,6 @@ public class SeleniumCrawler {
     private void goToNextPage(PaginationInfo paginationInfo, WebDriver driver) {
         WebElement nextPage = driver.findElement(By.xpath("//*[@class=\"pagelist\"]//a[@href=\"" + paginationInfo.getNextPageHref() + "\"]"));
         nextPage.click();
+        log.info("Navigated to: " + driver.getCurrentUrl());
     }
 }

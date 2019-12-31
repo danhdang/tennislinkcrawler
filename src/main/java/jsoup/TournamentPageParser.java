@@ -5,15 +5,23 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import parsedresult.ParsedTournament;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TournamentPageParser {
 
+    private static final Logger log = LoggerFactory.getLogger(TournamentPageParser.class);
+
     public void parsePage(String tournamentGoLinkId, ParsedTournament parsedTournament) {
         try {
-            Document document = Jsoup.connect("https://tennislink.usta.com/tournaments/TournamentHome/Tournament.aspx?T=" + tournamentGoLinkId).get();
+            String url = "https://tennislink.usta.com/tournaments/TournamentHome/Tournament.aspx?T=" + tournamentGoLinkId;
+            log.info("Parsing tournament page: " + url);
+            Document document = Jsoup.connect(url).get();
             parseDocument(document.outerHtml(), parsedTournament);
         } catch (IOException e) {
             e.printStackTrace();
@@ -30,6 +38,7 @@ public class TournamentPageParser {
         parseOrgFax(orgTableRows.get(3), parsedTournament);
         parseOrgWebSite(orgTableRows.get(4), parsedTournament);
         parseOrgAddress(orgTableRows.get(5), parsedTournament);
+        parseGoogleMapLink(orgTableRows.get(5), parsedTournament);
 
         Element contactsTable = document.getElementById("contact");
         Elements contactsTableRows = contactsTable.getElementsByTag("tr");
@@ -52,6 +61,41 @@ public class TournamentPageParser {
         parseSendChecksTo(entryTableRows.get(4), parsedTournament);
         parseTournamentWebsite(entryTableRows.get(5), parsedTournament);
 
+        Element tournamentInfoTable = document.getElementsByClass("tournament_info").first();
+        Elements tournamentInfoRows = tournamentInfoTable.getElementsByTag("tr");
+
+        parseSkillLevel(tournamentInfoRows.get(1), parsedTournament);
+        parseTournamentDateRange(tournamentInfoRows.get(1), parsedTournament);
+
+
+    }
+
+    private void parseTournamentDateRange(Element element, ParsedTournament parsedTournament) {
+        String tdText = element.getElementsByTag("td").get(1).text();
+        parsedTournament.setTournamentDates(tdText.trim());
+    }
+
+    private void parseSkillLevel(Element element, ParsedTournament parsedTournament) {
+        String tdText = element.getElementsByTag("td").get(0).text();
+
+        List<String> skillLevels = new ArrayList<>();
+        if(tdText.toLowerCase().contains("entry level")) {
+            skillLevels.add("Entry Level");
+        }
+
+        if(tdText.toLowerCase().contains("intermediate")) {
+            skillLevels.add("Intermediate");
+        }
+
+        if(tdText.toLowerCase().contains("advanced")) {
+            skillLevels.add("Advanced");
+        }
+
+        parsedTournament.setSkillLevel(skillLevels.toArray(new String[0]));
+    }
+
+    private void parseGoogleMapLink(Element element, ParsedTournament parsedTournament) {
+        parsedTournament.setGoogleMap(element.getElementById("ctl00_mainContent_lnkMap").attr("href"));
     }
 
     private void parseTournamentWebsite(Element element, ParsedTournament parsedTournament) {
