@@ -42,6 +42,17 @@ public class CrawlerTest {
     }
 
     @Test
+    public void TestTournamentPageParserHttp() {
+        TournamentPageParser parser = new TournamentPageParser();
+        ParsedTournament tournament = new ParsedTournament();
+
+        parser.parsePage("251658", tournament);
+
+        DynamoDbSerializer serializer = new DynamoDbSerializer();
+        serializer.serializeParsedResult(new ParsedResult(tournament));
+    }
+
+    @Test
     public void testSearchResultParser() {
         TournamentSearchResultParser parser = new TournamentSearchResultParser();
         ParsedResult parsedResult = parser.parseSearchResult(getResourceFileAsString("searchresult1.html"));

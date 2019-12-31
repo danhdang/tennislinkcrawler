@@ -38,8 +38,8 @@ public class ParsedTournament {
     private String cityState;
     private String googleMap;
     private String tournamentUstaUrl;
-    private Map<String, String> messages;
-
+    private String importantInfoText;
+    private String importantInfoHtml;
 
     public String getTournamentStartDate() {
         return tournamentStartDate;
@@ -313,11 +313,19 @@ public class ParsedTournament {
         this.tournamentUstaUrl = tournamentUstaUrl;
     }
 
-    public Map<String, String> getMessages() {
-        return messages;
+    public String getImportantInfoText() {
+        return importantInfoText;
     }
 
-    public void setMessages(Map<String, String> messages) {
-        this.messages = messages;
+    public void setImportantInfoText(String importantInfoText) {
+        this.importantInfoText = importantInfoText;
+    }
+
+    public String getImportantInfoHtml() {
+        return importantInfoHtml;
+    }
+
+    public void setImportantInfoHtml(String importantInfoHtml) {
+        this.importantInfoHtml = importantInfoHtml;
     }
 }

@@ -2,4 +2,4 @@ build
 .gradle
 .idea
 out
-/src/test/resources/aws.properties
+/src/test/resources/secret.properties

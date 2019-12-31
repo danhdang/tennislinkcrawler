@@ -76,15 +76,9 @@ public class TournamentPageParser {
         parseSkillLevel(tournamentInfoRows.get(1), parsedTournament);
         parseTournamentDateRange(tournamentInfoRows.get(1), parsedTournament);
 
-        Element messagesTable = document.getElementById("ctl00_mainContent_ControlTabs0_dgMessages");
-        Elements messageRowElements = messagesTable.getElementsByClass("tr");
-
-        Map<String, String> messages = messageRowElements.stream().map(row -> {
-            String messageTitle = row.getElementsByTag("strong").first().text();
-            String messageBody = row.getElementsByTag("p").first().text();
-            return new String[]{messageTitle, messageBody};
-        }).collect(Collectors.toMap(p -> p[0], p -> p[1]));
-        parsedTournament.setMessages(messages);
+        Element importantInfoElement = document.getElementById("important_info");
+        parsedTournament.setImportantInfoText(importantInfoElement.text());
+        parsedTournament.setImportantInfoHtml(importantInfoElement.html());
 
     }
 

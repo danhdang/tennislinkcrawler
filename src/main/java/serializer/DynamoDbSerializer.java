@@ -10,6 +10,7 @@ import com.amazonaws.services.dynamodbv2.document.Table;
 import com.amazonaws.services.dynamodbv2.model.*;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
 import org.apache.commons.lang.StringUtils;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import parsedresult.ParsedResult;
@@ -36,7 +37,7 @@ public class DynamoDbSerializer {
     private JsonSerializer jsonSerializer = new JsonSerializer();
 
     public DynamoDbSerializer() {
-        InputStream configResourceStream = getClass().getClassLoader().getResourceAsStream("aws.properties");
+        InputStream configResourceStream = getClass().getClassLoader().getResourceAsStream("secret.properties");
         appProps = new Properties();
         try {
             appProps.load(configResourceStream);
@@ -102,6 +103,7 @@ public class DynamoDbSerializer {
             log.info("Saving tournament to DynamoDb: " + jsonSerializer.serialize(tournament) );
 
             Item tournamentItem = new Item().withPrimaryKey("tournamentId",tournament.getTournamentId());
+            tournamentItem.withString("lastUpdated", DateTime.now().toString());
 
             List<PropertyDescriptor> propertyDescriptors = getPropertyDescriptors(tournament);
             propertyDescriptors.forEach(pd -> {
@@ -125,7 +127,6 @@ public class DynamoDbSerializer {
                 if(value == null) {
                     return;
                 }
-
 
                 Class<?> mapClass = Map.class;
                 if(propertyType.getName().equalsIgnoreCase(mapClass.getName())) {
