@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import parsedresult.ParsedResult;
+import parsedresult.ParsedTournament;
 import selenium.SeleniumCrawler;
 
 import java.io.File;
@@ -15,6 +16,15 @@ public class JsonSerializer {
 
     private static final Logger log = LoggerFactory.getLogger(JsonSerializer.class);
 
+    public String serialize(ParsedTournament parsedTournament) {
+        try {
+            return objectMapper.writeValueAsString(parsedTournament);
+        } catch (JsonProcessingException e) {
+            log.error(e.toString());
+        }
+        return "";
+    }
+
     public String serialize(ParsedResult result)  {
         try {
             return objectMapper.writeValueAsString(result.getParsedTournamentList());
@@ -22,10 +32,12 @@ public class JsonSerializer {
             log.error(e.toString());
         }
 
-        return null;
+        return "";
     }
 
     public void saveToJsonFile(ParsedResult result) throws IOException {
         objectMapper.writeValue(new File("tournaments.json"), result.getParsedTournamentList());
     }
+
+
 }

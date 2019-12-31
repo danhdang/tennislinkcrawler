@@ -36,6 +36,9 @@ public class CrawlerTest {
         parser.parseDocument(getResourceFileAsString("tournamentPage1.html"), tournament);
 
         Assert.assertEquals("Orange County Tennis Academy/Anaheim Tennis Center", tournament.getOrganizationName());
+
+        DynamoDbSerializer serializer = new DynamoDbSerializer();
+        serializer.serializeParsedResult(new ParsedResult(tournament));
     }
 
     @Test

@@ -12,6 +12,10 @@ import parsedresult.ParsedTournament;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class TournamentPageParser {
 
@@ -30,6 +34,10 @@ public class TournamentPageParser {
 
     public void parseDocument(String html, ParsedTournament parsedTournament) {
         Document document = Jsoup.parse(html);
+
+        Element heading = document.getElementsByTag("h1").first();
+        parsedTournament.setTournamentName(heading.text().trim());
+
         Element orgTable = document.getElementById("organization");
         Elements orgTableRows = orgTable.getElementsByTag("tr");
 
@@ -64,10 +72,28 @@ public class TournamentPageParser {
         Element tournamentInfoTable = document.getElementsByClass("tournament_info").first();
         Elements tournamentInfoRows = tournamentInfoTable.getElementsByTag("tr");
 
+        parseTournamentId(tournamentInfoRows.get(1), parsedTournament);
         parseSkillLevel(tournamentInfoRows.get(1), parsedTournament);
         parseTournamentDateRange(tournamentInfoRows.get(1), parsedTournament);
 
+        Element messagesTable = document.getElementById("ctl00_mainContent_ControlTabs0_dgMessages");
+        Elements messageRowElements = messagesTable.getElementsByClass("tr");
 
+        Map<String, String> messages = messageRowElements.stream().map(row -> {
+            String messageTitle = row.getElementsByTag("strong").first().text();
+            String messageBody = row.getElementsByTag("p").first().text();
+            return new String[]{messageTitle, messageBody};
+        }).collect(Collectors.toMap(p -> p[0], p -> p[1]));
+        parsedTournament.setMessages(messages);
+
+    }
+
+    private void parseTournamentId(Element element, ParsedTournament parsedTournament) {
+        String tdText = element.getElementsByTag("td").get(0).text();
+        Matcher matcher = Pattern.compile("(?<id>\\d{4,})", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE).matcher(tdText);
+        if(matcher.find()) {
+            parsedTournament.setTournamentId(matcher.group("id"));
+        }
     }
 
     private void parseTournamentDateRange(Element element, ParsedTournament parsedTournament) {

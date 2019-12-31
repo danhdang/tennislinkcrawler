@@ -33,6 +33,7 @@ public class DynamoDbSerializer {
     private Properties appProps;
     private BasicAWSCredentials awsCredentials;
     private String tableName = "tennislink_tournaments";
+    private JsonSerializer jsonSerializer = new JsonSerializer();
 
     public DynamoDbSerializer() {
         InputStream configResourceStream = getClass().getClassLoader().getResourceAsStream("aws.properties");
@@ -97,6 +98,9 @@ public class DynamoDbSerializer {
         Table tournamentTable = dynamoDB.getTable(tableName);
 
         result.getParsedTournamentList().stream().forEach(tournament -> {
+
+            log.info("Saving tournament to DynamoDb: " + jsonSerializer.serialize(tournament) );
+
             Item tournamentItem = new Item().withPrimaryKey("tournamentId",tournament.getTournamentId());
 
             List<PropertyDescriptor> propertyDescriptors = getPropertyDescriptors(tournament);
@@ -120,6 +124,15 @@ public class DynamoDbSerializer {
 
                 if(value == null) {
                     return;
+                }
+
+
+                Class<?> mapClass = Map.class;
+                if(propertyType.getName().equalsIgnoreCase(mapClass.getName())) {
+                    Map<String, ?> stringMap = (Map<String, ?>) value;
+                    if(stringMap.size() > 0) {
+                        tournamentItem.withMap(name, stringMap);
+                    }
                 }
 
                 Class<?> arrayClass = String[].class;

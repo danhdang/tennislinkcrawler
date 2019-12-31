@@ -1,5 +1,7 @@
 package parsedresult;
 
+import java.util.Map;
+
 public class ParsedTournament {
 
     private String tournamentStartDate;
@@ -36,7 +38,7 @@ public class ParsedTournament {
     private String cityState;
     private String googleMap;
     private String tournamentUstaUrl;
-
+    private Map<String, String> messages;
 
 
     public String getTournamentStartDate() {
@@ -309,5 +311,13 @@ public class ParsedTournament {
 
     public void setTournamentUstaUrl(String tournamentUstaUrl) {
         this.tournamentUstaUrl = tournamentUstaUrl;
+    }
+
+    public Map<String, String> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Map<String, String> messages) {
+        this.messages = messages;
     }
 }

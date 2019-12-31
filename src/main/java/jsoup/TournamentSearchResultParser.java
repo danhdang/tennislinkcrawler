@@ -61,10 +61,6 @@ public class TournamentSearchResultParser {
         if(cityState.isPresent()) {
             tournament.setCityState(cityState.get().text().trim());
         }
-
-//        Element mapElement = webElement.getElementsByTag("a").first();
-//        tournament.setGoogleMap(mapElement.attr("href").trim());
-
     }
 
     private void parseDescriptionCell(ParsedTournament tournament, Element webElement) {
@@ -93,14 +89,6 @@ public class TournamentSearchResultParser {
         if(levelMatcher2.matches()) {
             tournament.setTournamentLevel(Integer.parseInt(levelMatcher2.group("level")));
         }
-
-//        Element skillLevelElement = webElement.select(".tooltip2").first();
-//        if(skillLevelElement != null) {
-//            Optional<TextNode> skillLevelTextNode = skillLevelElement.textNodes().stream().findFirst();
-//            if(skillLevelTextNode.isPresent()) {
-//                tournament.setSkillLevel(skillLevelTextNode.get().text().trim());
-//            }
-//        }
 
         Elements divisionElements = webElement.select("ul.plain-list.compact");
         String[] divisions = divisionElements.stream().map(d -> cleanDivisionText(d.text())).toArray(String[]::new);
