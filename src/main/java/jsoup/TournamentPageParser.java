@@ -117,7 +117,7 @@ public class TournamentPageParser {
     private void parseOrgAddress(Element element, ParsedTournament parsedTournament) {
         String elemText = getSecondCellText(element);
         String address = StringUtils.removeEnd(elemText, "Map").trim();
-        parsedTournament.setOrganizationAddress(address);
+        parsedTournament.setOrganizationAddress(StringUtils.trim(address));
     }
 
     private void parseOrgFax(Element element, ParsedTournament parsedTournament) {

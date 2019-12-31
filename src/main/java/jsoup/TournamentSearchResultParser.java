@@ -74,15 +74,22 @@ public class TournamentSearchResultParser {
         }
 
         String linkText = tournamentLinkWebElement.text();
-        Matcher tournamentMatcher = Pattern.compile("(?<tournament>.*?)(\\s+-\\s+)(?<id>\\d{4,})$", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE ).matcher(linkText);
+        Matcher tournamentMatcher = Pattern.compile("(?<tournament>.*?)(\\s+-\\s+)(?<id>\\d{4,})$", Pattern.CASE_INSENSITIVE).matcher(linkText);
         if(tournamentMatcher.matches()) {
             tournament.setTournamentId(tournamentMatcher.group("id"));
             tournament.setTournamentName(tournamentMatcher.group("tournament"));
 
-            Matcher levelMatcher = Pattern.compile(".*\\(Level\\s*(?<level>\\d+)\\s*\\).*", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE ).matcher(linkText);
+            Matcher levelMatcher = Pattern.compile(".*\\(Level\\s*(?<level>\\d+)\\s*\\).*", Pattern.CASE_INSENSITIVE).matcher(linkText);
             if(levelMatcher.matches()) {
                 tournament.setTournamentLevel(Integer.parseInt(levelMatcher.group("level")));
             }
+
+            Matcher levelMatcher2 = Pattern.compile("L(?<level>\\d+)\\s+.*", Pattern.CASE_INSENSITIVE).matcher(linkText);
+            if(levelMatcher2.matches()) {
+                tournament.setTournamentLevel(Integer.parseInt(levelMatcher2.group("level")));
+            }
+
+
         }
 
         Element skillLevelElement = webElement.select(".tooltip2").first();

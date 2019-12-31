@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
 import jsoup.TournamentPageParser;
 import jsoup.TournamentSearchResultParser;
 import org.junit.Assert;
@@ -5,6 +6,8 @@ import org.junit.Test;
 import parsedresult.ParsedResult;
 import parsedresult.ParsedTournament;
 import selenium.SeleniumCrawler;
+import serializer.DynamoDbSerializer;
+import serializer.JsonSerializer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,9 +20,12 @@ import java.util.stream.Collectors;
 public class CrawlerTest {
 
     @Test
-    public void TestRun() {
+    public void TestRun() throws IOException {
         SeleniumCrawler crawler = new SeleniumCrawler();
         ParsedResult parsedResult = crawler.Run();
+        DynamoDbSerializer serializer = new DynamoDbSerializer();
+        serializer.initializeTable();
+        serializer.serializeParsedResult(parsedResult);
     }
 
     @Test
