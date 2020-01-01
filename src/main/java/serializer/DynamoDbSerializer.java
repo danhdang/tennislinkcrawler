@@ -81,7 +81,7 @@ public class DynamoDbSerializer {
                         new AttributeDefinition("tournamentId", ScalarAttributeType.S),
                         new AttributeDefinition("tournamentName", ScalarAttributeType.S)
                 ),
-                new ProvisionedThroughput(10L, 10L));
+                new ProvisionedThroughput(1L, 1L));
         try {
             table.waitForActive();
         } catch (InterruptedException e) {
@@ -147,6 +147,11 @@ public class DynamoDbSerializer {
                 Class<?> integerClass = Integer.class;
                 if(propertyType.getName().equalsIgnoreCase(integerClass.getName())) {
                     tournamentItem.withInt(name, (Integer) value);
+                }
+
+                Class<?> doubleClass = Double.class;
+                if(propertyType.getName().equalsIgnoreCase(doubleClass.getName())) {
+                    tournamentItem.withDouble(name, (Double) value);
                 }
 
                 Class<?> stringClass = String.class;

@@ -9,6 +9,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import parsedresult.ParsedTournament;
 
 import java.io.IOException;
 
@@ -18,7 +19,20 @@ public class CensusGeocoder {
     ObjectMapper objectMapper = new ObjectMapper();
     private static final Logger log = LoggerFactory.getLogger(CensusGeocoder.class);
 
+    public void geoCodeTournament(ParsedTournament tournament) {
+        GeocodeResponse response = geocodeAddress(tournament.getOrganizationAddress());
+
+        if(response == null) {
+            return;
+        }
+
+        tournament.setLocationLatituate(response.getCoordinatesX());
+        tournament.setLocationLongitude(response.getCoordinatesY());
+    }
+
     public GeocodeResponse geocodeAddress(String address) {
+
+        log.info("CensusGeocoder geocoding address: " +address);
         String requestUrl = "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address" +
                 "=" + address +
                 "&benchmark=9" +
@@ -37,6 +51,9 @@ public class CensusGeocoder {
     }
 
     private GeocodeResponse parseResponse(String responseBody) {
+
+        log.info("CensusGeocoder parsing response: " + responseBody);
+
         JsonNode json;
         try {
             json = objectMapper.readTree(responseBody);

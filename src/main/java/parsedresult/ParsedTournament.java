@@ -40,6 +40,9 @@ public class ParsedTournament {
     private String tournamentUstaUrl;
     private String importantInfoText;
     private String importantInfoHtml;
+    private Double locationLatituate;
+    private Double locationLongitude;
+
 
     public String getTournamentStartDate() {
         return tournamentStartDate;
@@ -343,5 +346,21 @@ public class ParsedTournament {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public Double getLocationLatituate() {
+        return locationLatituate;
+    }
+
+    public void setLocationLatituate(Double locationLatituate) {
+        this.locationLatituate = locationLatituate;
+    }
+
+    public Double getLocationLongitude() {
+        return locationLongitude;
+    }
+
+    public void setLocationLongitude(Double locationLongitude) {
+        this.locationLongitude = locationLongitude;
     }
 }

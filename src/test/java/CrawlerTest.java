@@ -1,5 +1,6 @@
 import jsoup.TournamentPageParser;
 import jsoup.TournamentSearchResultParser;
+import maps.CensusGeocoder;
 import org.junit.Assert;
 import org.junit.Test;
 import parsedresult.ParsedResult;
@@ -14,6 +15,10 @@ public class CrawlerTest extends BaseTest {
     public void TestRun() {
         SeleniumCrawler crawler = new SeleniumCrawler();
         ParsedResult parsedResult = crawler.Run();
+
+        CensusGeocoder geocoder = new CensusGeocoder();
+        parsedResult.getParsedTournamentList().forEach(t -> geocoder.geoCodeTournament(t));
+
         DynamoDbSerializer serializer = new DynamoDbSerializer();
         serializer.initializeTable();
         serializer.serializeParsedResult(parsedResult);
