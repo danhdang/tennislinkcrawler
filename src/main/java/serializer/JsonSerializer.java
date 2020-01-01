@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import parsedresult.ParsedResult;
 import parsedresult.ParsedTournament;
-import selenium.SeleniumCrawler;
 
 import java.io.File;
 import java.io.IOException;

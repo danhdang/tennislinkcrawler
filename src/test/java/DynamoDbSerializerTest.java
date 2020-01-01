@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DynamoDbSerializerTest {
+public class DynamoDbSerializerTest extends BaseTest {
 
     @Test
     public void testSerializer() {
@@ -19,7 +19,7 @@ public class DynamoDbSerializerTest {
         tournament1.setTournamentId("123123123123");
         tournament1.setTournamentName("This is my tournament");
         tournament1.setChecksPayableTo("Payable to me");
-        tournament1.setCityState("San Diego, CA");
+        tournament1.setCity("San Diego, CA");
         tournament1.setTournamentId("123123123123");
         tournament1.setDirectorCell("671-123-1231");
         tournament1.setDirectorName("Mr. Director");

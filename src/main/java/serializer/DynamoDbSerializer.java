@@ -46,8 +46,8 @@ public class DynamoDbSerializer {
         }
 
         awsCredentials = new BasicAWSCredentials(
-                appProps.getProperty("access_key"),
-                appProps.getProperty("secret_key")
+                appProps.getProperty("aws_access_key"),
+                appProps.getProperty("aws_secret_key")
         );
     }
 

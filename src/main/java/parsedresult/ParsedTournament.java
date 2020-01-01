@@ -1,7 +1,5 @@
 package parsedresult;
 
-import java.util.Map;
-
 public class ParsedTournament {
 
     private String tournamentStartDate;
@@ -35,7 +33,9 @@ public class ParsedTournament {
     private String checksPayableTo;
     private String sendChecksTo;
     private String tournamentWebsite;
-    private String cityState;
+    private String city;
+    private String state;
+    private String zipCode;
     private String googleMap;
     private String tournamentUstaUrl;
     private String importantInfoText;
@@ -289,12 +289,12 @@ public class ParsedTournament {
         this.district = district;
     }
 
-    public String getCityState() {
-        return cityState;
+    public String getCity() {
+        return city;
     }
 
-    public void setCityState(String cityState) {
-        this.cityState = cityState;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getGoogleMap() {
@@ -327,5 +327,21 @@ public class ParsedTournament {
 
     public void setImportantInfoHtml(String importantInfoHtml) {
         this.importantInfoHtml = importantInfoHtml;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 }

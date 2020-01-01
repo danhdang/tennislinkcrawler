@@ -9,12 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import parsedresult.ParsedResult;
 import parsedresult.ParsedTournament;
-import selenium.SeleniumCrawler;
 
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.IntFunction;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -58,8 +55,10 @@ public class TournamentSearchResultParser {
 
     private void parseLocationCell(ParsedTournament tournament, Element webElement) {
         Optional<TextNode> cityState = webElement.textNodes().stream().findFirst();
-        if(cityState.isPresent()) {
-            tournament.setCityState(cityState.get().text().trim());
+        if(cityState.isPresent() && cityState.get().text().contains(",")) {
+            String[] cityStateParts = cityState.get().text().split(",");
+            tournament.setCity(cityStateParts[0].trim());
+            tournament.setState(cityStateParts[1].trim());
         }
     }
 

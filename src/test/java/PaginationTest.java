@@ -3,7 +3,7 @@ import org.junit.Test;
 import pagination.PaginationInfo;
 import jsoup.PaginationParser;
 
-public class PaginationTest {
+public class PaginationTest extends BaseTest {
 
 
     @Test

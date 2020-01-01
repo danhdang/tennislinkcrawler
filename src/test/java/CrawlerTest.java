@@ -1,4 +1,3 @@
-import com.fasterxml.jackson.core.JsonProcessingException;
 import jsoup.TournamentPageParser;
 import jsoup.TournamentSearchResultParser;
 import org.junit.Assert;
@@ -7,17 +6,9 @@ import parsedresult.ParsedResult;
 import parsedresult.ParsedTournament;
 import selenium.SeleniumCrawler;
 import serializer.DynamoDbSerializer;
-import serializer.JsonSerializer;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 
-public class CrawlerTest {
+public class CrawlerTest extends BaseTest {
 
     @Test
     public void TestRun() {
@@ -57,22 +48,6 @@ public class CrawlerTest {
         TournamentSearchResultParser parser = new TournamentSearchResultParser();
         ParsedResult parsedResult = parser.parseSearchResult(getResourceFileAsString("searchresult1.html"));
         Assert.assertEquals(20, parsedResult.getParsedTournamentList().size());
-    }
-
-
-
-    public static String getResourceFileAsString(String fileName){
-        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-        try (InputStream is = classLoader.getResourceAsStream(fileName)) {
-            if (is == null) return null;
-            try (InputStreamReader isr = new InputStreamReader(is);
-                 BufferedReader reader = new BufferedReader(isr)) {
-                return reader.lines().collect(Collectors.joining(System.lineSeparator()));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 
 
