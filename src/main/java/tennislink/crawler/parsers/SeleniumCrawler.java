@@ -1,4 +1,4 @@
-package selenium;
+package tennislink.crawler.parsers;
 
 import com.machinepublishers.jbrowserdriver.JBrowserDriver;
 import org.openqa.selenium.By;
@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pagination.PaginationInfo;
-import parsedresult.ParsedResult;
+import tennislink.crawler.models.PaginationInfo;
+import tennislink.crawler.models.ParsedResult;
 
 public class SeleniumCrawler {
 

@@ -1,4 +1,4 @@
-package maps;
+package tennislink.crawler.maps;
 
 public class GeocodeResponse {
     private String matchedAddress;

@@ -1,11 +1,11 @@
-package serializer;
+package tennislink.crawler.serializers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import parsedresult.ParsedResult;
-import parsedresult.ParsedTournament;
+import tennislink.crawler.models.ParsedResult;
+import tennislink.crawler.models.ParsedTournament;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package jsoup;
+package tennislink.crawler.parsers;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -7,8 +7,8 @@ import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import parsedresult.ParsedResult;
-import parsedresult.ParsedTournament;
+import tennislink.crawler.models.ParsedResult;
+import tennislink.crawler.models.ParsedTournament;
 
 import java.util.List;
 import java.util.Optional;

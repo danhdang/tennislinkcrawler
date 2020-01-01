@@ -1,4 +1,4 @@
-package pagination;
+package tennislink.crawler.models;
 
 import org.apache.commons.lang.StringUtils;
 

@@ -1,4 +1,4 @@
-package parsedresult;
+package tennislink.crawler.models;
 
 public class ParsedTournament {
 

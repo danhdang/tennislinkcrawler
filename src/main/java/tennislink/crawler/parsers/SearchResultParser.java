@@ -1,18 +1,10 @@
-package selenium;
+package tennislink.crawler.parsers;
 
-import jsoup.TournamentPageParser;
-import jsoup.TournamentSearchResultParser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pagination.PaginationInfo;
-import jsoup.PaginationParser;
-import parsedresult.ParsedResult;
-import parsedresult.ParsedTournament;
-
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import tennislink.crawler.models.PaginationInfo;
+import tennislink.crawler.models.ParsedResult;
 
 public class SearchResultParser {
 

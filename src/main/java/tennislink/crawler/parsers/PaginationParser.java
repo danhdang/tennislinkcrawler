@@ -1,14 +1,11 @@
-package jsoup;
+package tennislink.crawler.parsers;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.IntegerValidator;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.TextNode;
-import org.jsoup.select.Elements;
-import pagination.PaginationInfo;
-import sun.security.ssl.Debug;
+import tennislink.crawler.models.PaginationInfo;
 
 import java.util.Optional;
 import java.util.regex.Pattern;

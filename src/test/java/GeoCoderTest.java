@@ -1,5 +1,5 @@
-import maps.CensusGeocoder;
-import maps.GeocodeResponse;
+import tennislink.crawler.maps.CensusGeocoder;
+import tennislink.crawler.maps.GeocodeResponse;
 import org.junit.Assert;
 import org.junit.Test;
 

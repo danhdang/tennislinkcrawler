@@ -1,7 +1,7 @@
 import org.junit.Test;
-import parsedresult.ParsedResult;
-import parsedresult.ParsedTournament;
-import serializer.DynamoDbSerializer;
+import tennislink.crawler.models.ParsedResult;
+import tennislink.crawler.models.ParsedTournament;
+import tennislink.crawler.serializers.DynamoDbSerializer;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,15 +1,14 @@
-package maps;
+package tennislink.crawler.maps;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jsoup.TournamentSearchResultParser;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import parsedresult.ParsedTournament;
+import tennislink.crawler.models.ParsedTournament;
 
 import java.io.IOException;
 

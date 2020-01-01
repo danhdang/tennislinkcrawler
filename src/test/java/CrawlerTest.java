@@ -1,12 +1,12 @@
-import jsoup.TournamentPageParser;
-import jsoup.TournamentSearchResultParser;
-import maps.CensusGeocoder;
+import tennislink.crawler.parsers.TournamentPageParser;
+import tennislink.crawler.parsers.TournamentSearchResultParser;
+import tennislink.crawler.maps.CensusGeocoder;
 import org.junit.Assert;
 import org.junit.Test;
-import parsedresult.ParsedResult;
-import parsedresult.ParsedTournament;
-import selenium.SeleniumCrawler;
-import serializer.DynamoDbSerializer;
+import tennislink.crawler.models.ParsedResult;
+import tennislink.crawler.models.ParsedTournament;
+import tennislink.crawler.parsers.SeleniumCrawler;
+import tennislink.crawler.serializers.DynamoDbSerializer;
 
 
 public class CrawlerTest extends BaseTest {

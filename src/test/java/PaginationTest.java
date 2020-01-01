@@ -1,7 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
-import pagination.PaginationInfo;
-import jsoup.PaginationParser;
+import tennislink.crawler.models.PaginationInfo;
+import tennislink.crawler.parsers.PaginationParser;
 
 public class PaginationTest extends BaseTest {
 
