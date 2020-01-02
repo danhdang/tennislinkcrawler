@@ -25,8 +25,8 @@ public class DateParserTest {
         TournamentDatesParser parser = new TournamentDatesParser();
         parser.parseDateFields(result);
 
-        Assert.assertEquals("2020-01-04T00:00:00Z", tournament1.getTournamentStartDate());
-        Assert.assertEquals("2019-12-31T00:00:00Z", tournament1.getEntriesClosed());
+        Assert.assertEquals("2020-01-04T00:00:00", tournament1.getTournamentStartDate());
+        Assert.assertEquals("2019-12-31T00:00:00", tournament1.getEntriesClosed());
 
         System.out.println(tournament1.getTournamentStartDate());
         System.out.println(tournament1.getEntriesClosed());
@@ -46,13 +46,14 @@ public class DateParserTest {
         tournament1.setDirectorName("Mr. Director");
         tournament1.setDivisions(new String[] { "division 1", "division 2"});
         tournament1.setTournamentStartDate("01/04/2020");
-        tournament1.setEntriesClosed("Tuesday, January 07, 2020 11:59 PM (Pacific Time)");
+        tournament1.setEntriesClosed("Tuesday, January 07, 2020 4:00 PM (Pacific Time)");
         result.add(tournament1);
 
         TournamentDatesParser parser = new TournamentDatesParser();
         parser.parseDateFields(result);
 
-        Assert.assertEquals("2020-01-04T00:00:00Z", tournament1.getTournamentStartDate());
+        Assert.assertEquals("2020-01-04T00:00:00", tournament1.getTournamentStartDate());
+        Assert.assertEquals("2020-01-07T16:00:00", tournament1.getEntriesClosed());
 
         System.out.println(tournament1.getTournamentStartDate());
         System.out.println(tournament1.getEntriesClosed());
