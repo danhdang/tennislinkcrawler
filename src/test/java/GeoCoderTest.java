@@ -16,4 +16,15 @@ public class GeoCoderTest extends BaseTest {
         Assert.assertEquals(-76.92691, response.getCoordinatesX(), 0.01);
         Assert.assertEquals(38.846542, response.getCoordinatesY(), 0.01);
     }
+
+    @Test
+    public void testGeoCoderFail() {
+        CensusGeocoder geocoder = new CensusGeocoder();
+        GeocodeResponse response = geocoder.geocodeAddress("6336 Canoga Ave Box #1 Woodland Hills, CA 91367");
+
+        Assert.assertFalse(response.getSuccess());
+
+    }
+
+
 }

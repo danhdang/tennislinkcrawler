@@ -22,7 +22,7 @@ public class CensusGeocoder {
     public void geoCodeTournament(ParsedTournament tournament) {
         GeocodeResponse response = geocodeAddress(tournament.getOrganizationAddress());
 
-        if(response == null) {
+        if(response == null || !response.getSuccess()) {
             return;
         }
 
@@ -31,6 +31,7 @@ public class CensusGeocoder {
         tournament.setCity(response.getCity());
         tournament.setState(response.getState());
         tournament.setZipCode(response.getZipCode());
+        tournament.setOrganizationAddress(response.getMatchedAddress());
     }
 
     public GeocodeResponse geocodeAddress(String address) {
@@ -46,26 +47,35 @@ public class CensusGeocoder {
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
-            return parseResponse(response.body().string());
+            return parseResponse(address, response.body().string());
         } catch (IOException e) {
             log.error(e.toString());
         }
-        return null;
+
+        return getFailedResponse();
+
     }
 
-    private GeocodeResponse parseResponse(String responseBody) {
+    private GeocodeResponse getFailedResponse() {
+        GeocodeResponse response = new GeocodeResponse();
+        response.setSuccess(false);
+        return response;
+    }
 
-        log.info("CensusGeocoder parsing response: " + responseBody);
+    private GeocodeResponse parseResponse(String address, String responseBody) {
 
         JsonNode json;
         try {
             json = objectMapper.readTree(responseBody);
         } catch (JsonProcessingException e) {
-            log.error("CensusCoder parse error: " + e.toString());
-            return null;
+            log.error("CensusCoder could not geocode address: " +address + " Error: " + e.toString());
+            return getFailedResponse();
         }
 
+        log.info("Census Geocoder parsing response: " + responseBody);
+
         GeocodeResponse response = new GeocodeResponse();
+        response.setSuccess(true);
         response.setCity(json.at("/result/addressMatches/0/addressComponents/city").asText());
         response.setState(json.at("/result/addressMatches/0/addressComponents/state").asText());
         response.setZipCode(json.at("/result/addressMatches/0/addressComponents/zip").asText());

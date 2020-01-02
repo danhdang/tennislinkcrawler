@@ -1,6 +1,8 @@
 package tennislink.crawler.models;
 
 public class GeocodeResponse {
+
+    private Boolean success;
     private String matchedAddress;
     private Double coordinatesX;
     private Double coordinatesY;
@@ -108,5 +110,13 @@ public class GeocodeResponse {
 
     public void setMatchedAddress(String matchedAddress) {
         this.matchedAddress = matchedAddress;
+    }
+
+    public Boolean getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(Boolean success) {
+        this.success = success;
     }
 }
