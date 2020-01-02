@@ -9,15 +9,23 @@ import org.slf4j.LoggerFactory;
 import tennislink.crawler.models.PaginationInfo;
 import tennislink.crawler.models.ParsedResult;
 
+import java.util.List;
+
 public class SeleniumCrawler {
 
     private static final Logger log = LoggerFactory.getLogger(SeleniumCrawler.class);
 
-    public ParsedResult Run() {
-        return crawlRequestResults("", "", 92129, 1, 2020, 100);
+    public ParsedResult crawlRegion(List<String> states, List<Integer> months, Integer year, Integer searchRadius) {
+        ParsedResult result = new ParsedResult();
+        months.forEach(month -> {
+            states.forEach(state -> {
+                crawlRequestResults("", state, null, month, year, searchRadius, result);
+            });
+        });
+        return result;
     }
 
-    public ParsedResult crawlRequestResults(String city, String state, Integer zipCode, Integer month, Integer year, Integer searchRadius) {
+    public void crawlRequestResults(String city, String state, Integer zipCode, Integer month, Integer year, Integer searchRadius, ParsedResult result) {
        WebDriver driver = new JBrowserDriver();
 
        String requestUrl = "https://tennislink.usta.com/tournaments/schedule/SearchResults.aspx" +
@@ -51,14 +59,13 @@ public class SeleniumCrawler {
        SearchResultParser parser = new SearchResultParser();
        while(true) {
            PaginationInfo paginationInfo = parser.parsePagination(driver);
-           parser.parseSearchResult(driver);
+           parser.parseSearchResult(driver, result);
 
            if(paginationInfo.isLastPage())
                break;
 
            goToNextPage(paginationInfo, driver);
        }
-       return parser.getParsedResult();
     }
 
     private String toString(String value) {

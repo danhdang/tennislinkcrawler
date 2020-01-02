@@ -7,6 +7,10 @@ import tennislink.crawler.models.ParsedResult;
 import tennislink.crawler.models.ParsedTournament;
 import tennislink.crawler.parsers.SeleniumCrawler;
 import tennislink.crawler.serializers.DynamoDbSerializer;
+import tennislink.crawler.serializers.JsonSerializer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CrawlerTest extends BaseTest {
@@ -14,14 +18,24 @@ public class CrawlerTest extends BaseTest {
     @Test
     public void TestRun() {
         SeleniumCrawler crawler = new SeleniumCrawler();
-        ParsedResult parsedResult = crawler.Run();
+
+        List<String> states = new ArrayList<>();
+        states.add("CA");
+
+        List<Integer> months = new ArrayList<>();
+        months.add(1);
+
+        ParsedResult parsedResult = crawler.crawlRegion(states, months, 2020, 200);
 
         CensusGeocoder geocoder = new CensusGeocoder();
         parsedResult.getParsedTournamentList().forEach(t -> geocoder.geoCodeTournament(t));
 
-        DynamoDbSerializer serializer = new DynamoDbSerializer();
-        serializer.initializeTable();
-        serializer.serializeParsedResult(parsedResult);
+//        DynamoDbSerializer serializer = new DynamoDbSerializer();
+//        serializer.initializeTable();
+//        serializer.serializeParsedResult(parsedResult);
+
+        JsonSerializer serializer = new JsonSerializer();
+        serializer.serializeToFiles(parsedResult);
     }
 
     @Test
@@ -47,13 +61,5 @@ public class CrawlerTest extends BaseTest {
         DynamoDbSerializer serializer = new DynamoDbSerializer();
         serializer.serializeParsedResult(new ParsedResult(tournament));
     }
-
-    @Test
-    public void testSearchResultParser() {
-        TournamentSearchResultParser parser = new TournamentSearchResultParser();
-        ParsedResult parsedResult = parser.parseSearchResult(getResourceFileAsString("searchresult1.html"));
-        Assert.assertEquals(20, parsedResult.getParsedTournamentList().size());
-    }
-
 
 }

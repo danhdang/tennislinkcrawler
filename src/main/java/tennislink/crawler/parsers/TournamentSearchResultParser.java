@@ -17,23 +17,21 @@ import java.util.regex.Pattern;
 
 public class TournamentSearchResultParser {
 
-    ParsedResult parsedResult = new ParsedResult();
     private static final Logger log = LoggerFactory.getLogger(TournamentSearchResultParser.class);
 
-    public ParsedResult parseSearchResult(String html) {
+    public void parseSearchResult(String html, ParsedResult result) {
         Document document = Jsoup.parse(html);
-        parseSearchResult(document);
-        return parsedResult;
+        parseSearchResult(document, result);
     }
 
-    private void parseSearchResult(Document document) {
+    private void parseSearchResult(Document document, ParsedResult result) {
 
         Element tournamentTable = document.getElementById("ctl00_mainContent_dgTournaments");
         Elements rows = tournamentTable.select("tbody > tr");
 
         rows.stream().forEach(r ->{
             if(isTournamentRow(r)) {
-                parseTournamentRow(r);
+                parseTournamentRow(r, result);
             }
         });
 
@@ -43,14 +41,14 @@ public class TournamentSearchResultParser {
         return !rowWebElement.hasAttr("align");
     }
 
-    private void parseTournamentRow(Element rowWebElement) {
+    private void parseTournamentRow(Element rowWebElement, ParsedResult result) {
         ParsedTournament tournament = new ParsedTournament();
-        parsedResult.getParsedTournamentList().add(tournament);
-
         List<Element> tournamentCells = rowWebElement.getElementsByTag("td");
         parseDateCell(tournament, tournamentCells.get(0));
         parseDescriptionCell(tournament, tournamentCells.get(1));
         parseLocationCell(tournament, tournamentCells.get(2));
+
+        result.add(tournament);
     }
 
     private void parseLocationCell(ParsedTournament tournament, Element webElement) {

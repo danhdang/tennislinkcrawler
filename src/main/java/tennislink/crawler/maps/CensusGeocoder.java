@@ -28,6 +28,9 @@ public class CensusGeocoder {
 
         tournament.setLocationLatituate(response.getCoordinatesX());
         tournament.setLocationLongitude(response.getCoordinatesY());
+        tournament.setCity(response.getCity());
+        tournament.setState(response.getState());
+        tournament.setZipCode(response.getZipCode());
     }
 
     public GeocodeResponse geocodeAddress(String address) {

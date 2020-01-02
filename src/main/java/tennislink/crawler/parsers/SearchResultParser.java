@@ -8,12 +8,7 @@ import tennislink.crawler.models.ParsedResult;
 
 public class SearchResultParser {
 
-    private ParsedResult parsedResult = new ParsedResult();
     private TournamentPageParser pageParser = new TournamentPageParser();
-
-    public ParsedResult getParsedResult() {
-        return parsedResult;
-    }
 
     public PaginationInfo parsePagination(WebDriver webDriver) {
         WebElement pagelistWebElement = webDriver.findElement(By.className("pagelist"));
@@ -22,11 +17,9 @@ public class SearchResultParser {
         return paginationInfo;
     }
 
-    public ParsedResult parseSearchResult(WebDriver driver) {
+    public void parseSearchResult(WebDriver driver, ParsedResult result) {
         TournamentSearchResultParser resultParser = new TournamentSearchResultParser();
-        ParsedResult result = resultParser.parseSearchResult(driver.findElement(By.tagName("body")).getAttribute("outerHTML"));
+        resultParser.parseSearchResult(driver.findElement(By.tagName("body")).getAttribute("outerHTML"), result);
         result.getParsedTournamentList().forEach(t -> pageParser.parsePage(t.getTournamentGoLinkId(), t));
-        parsedResult.getParsedTournamentList().addAll(result.getParsedTournamentList());
-        return parsedResult;
     }
 }
