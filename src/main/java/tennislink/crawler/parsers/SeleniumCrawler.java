@@ -15,17 +15,25 @@ public class SeleniumCrawler {
 
     private static final Logger log = LoggerFactory.getLogger(SeleniumCrawler.class);
 
+    public ParsedResult findNearestTournaments(String zipcode, List<Integer> months, Integer year, Integer searchRadius) {
+        ParsedResult result = new ParsedResult();
+        months.forEach(month -> {
+            crawlRequestResults("", "", zipcode, month, year, null,null, searchRadius, result);
+        });
+        return result;
+    }
+
     public ParsedResult crawlRegion(List<String> states, List<Integer> months, Integer year, Integer searchRadius) {
         ParsedResult result = new ParsedResult();
         months.forEach(month -> {
             states.forEach(state -> {
-                crawlRequestResults("", state, null, month, year, searchRadius, result);
+                crawlRequestResults("", state, null, month, year, null,null, searchRadius, result);
             });
         });
         return result;
     }
 
-    public void crawlRequestResults(String city, String state, Integer zipCode, Integer month, Integer year, Integer searchRadius, ParsedResult result) {
+    public void crawlRequestResults(String city, String state, String zipCode, Integer month, Integer year, Integer division, Integer category, Integer searchRadius, ParsedResult result) {
        WebDriver driver = new JBrowserDriver();
 
        String requestUrl = "https://tennislink.usta.com/tournaments/schedule/SearchResults.aspx" +
@@ -42,8 +50,8 @@ public class SeleniumCrawler {
                "&EndDate=" +
                "&Day=" +
                "&Year=" + toString(year) +
-               "&Division=" +
-               "&Category=" +
+               "&Division=" + toString(division) +
+               "&Category=" + toString(category) +
                "&Surface=" +
                "&OnlineEntry=" +
                "&DrawsSheets=" +

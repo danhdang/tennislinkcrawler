@@ -7,6 +7,7 @@ import tennislink.crawler.models.ParsedResult;
 import tennislink.crawler.models.ParsedTournament;
 import tennislink.crawler.parsers.SeleniumCrawler;
 import tennislink.crawler.serializers.DynamoDbSerializer;
+import tennislink.crawler.serializers.ExcelFileSerializer;
 import tennislink.crawler.serializers.JsonSerializer;
 
 import java.util.ArrayList;
@@ -14,6 +15,19 @@ import java.util.List;
 
 
 public class CrawlerTest extends BaseTest {
+
+    @Test
+    public void TestCrawlSanDiego() {
+        SeleniumCrawler crawler = new SeleniumCrawler();
+        List<Integer> months = new ArrayList<>();
+        months.add(1);
+        months.add(2);
+        ParsedResult parsedResult = crawler.findNearestTournaments("92129", months, 2020, 100);
+        CensusGeocoder geocoder = new CensusGeocoder();
+        parsedResult.getParsedTournamentList().forEach(t -> geocoder.geoCodeTournament(t));
+        ExcelFileSerializer excelFileSerializer = new ExcelFileSerializer();
+        excelFileSerializer.serializeToFile(parsedResult);
+    }
 
     @Test
     public void TestRun() {

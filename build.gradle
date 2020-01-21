@@ -24,6 +24,7 @@ dependencies {
     compile group: 'org.slf4j', name:'slf4j-api', version: '1.7.30'
     compile group: 'org.slf4j', name:'slf4j-log4j12', version: '1.7.2'
     compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.2.2'
+    compile group: 'org.apache.poi', name: 'poi', version: '4.1.1'
     implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.699')
     implementation 'com.amazonaws:aws-java-sdk-dynamodb'
     testCompile group: 'junit', name: 'junit', version: '4.12'
