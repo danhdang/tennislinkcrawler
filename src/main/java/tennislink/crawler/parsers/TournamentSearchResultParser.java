@@ -29,6 +29,10 @@ public class TournamentSearchResultParser {
         Element tournamentTable = document.getElementById("ctl00_mainContent_dgTournaments");
         Elements rows = tournamentTable.select("tbody > tr");
 
+        if(rows == null) {
+            return;
+        }
+
         rows.stream().forEach(r ->{
             if(isTournamentRow(r)) {
                 parseTournamentRow(r, result);
