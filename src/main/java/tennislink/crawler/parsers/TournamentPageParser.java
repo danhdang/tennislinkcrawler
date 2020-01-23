@@ -179,6 +179,7 @@ public class TournamentPageParser {
     private void parseOrgAddress(Element element, ParsedTournament parsedTournament) {
         String elemText = getSecondCellText(element);
         String address = StringUtils.removeEnd(elemText, "Map").trim();
+        address = address.replaceAll("(^\\h*)|(\\h*$)",""); // trim non-breaking space
         parsedTournament.setOrganizationAddress(StringUtils.trim(address));
     }
 

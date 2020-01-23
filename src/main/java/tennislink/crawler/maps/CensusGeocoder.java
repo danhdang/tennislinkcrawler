@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tennislink.crawler.models.GeocodeResponse;
@@ -22,7 +23,7 @@ public class CensusGeocoder {
     public void geoCodeTournament(ParsedTournament tournament) {
         GeocodeResponse response = geocodeAddress(tournament.getOrganizationAddress());
 
-        if(response == null || !response.getSuccess()) {
+        if(response == null || !response.getSuccess() || StringUtils.isEmpty(response.getMatchedAddress())) {
             return;
         }
 

@@ -15,10 +15,10 @@ public class SeleniumCrawler {
 
     private static final Logger log = LoggerFactory.getLogger(SeleniumCrawler.class);
 
-    public ParsedResult findNearestTournaments(String zipcode, List<Integer> months, Integer year, Integer searchRadius) {
+    public ParsedResult findNearestTournaments(String zipcode, List<Integer> months,  Integer year, QuickSearch quickSearch, TournamentDivision division, Integer searchRadius) {
         ParsedResult result = new ParsedResult();
         months.forEach(month -> {
-            crawlRequestResults("", "", zipcode, month, year, null,null, searchRadius, result);
+            crawlRequestResults("", "", zipcode, month, year, quickSearch, division, null, searchRadius, result);
         });
         return result;
     }
@@ -27,13 +27,13 @@ public class SeleniumCrawler {
         ParsedResult result = new ParsedResult();
         months.forEach(month -> {
             states.forEach(state -> {
-                crawlRequestResults("", state, null, month, year, null,null, searchRadius, result);
+                crawlRequestResults("", state, null, month, year, null, null,null, searchRadius, result);
             });
         });
         return result;
     }
 
-    public void crawlRequestResults(String city, String state, String zipCode, Integer month, Integer year, Integer division, Integer category, Integer searchRadius, ParsedResult result) {
+    public void crawlRequestResults(String city, String state, String zipCode, Integer month, Integer year, QuickSearch quickSearch, TournamentDivision division, Integer category, Integer searchRadius, ParsedResult result) {
        WebDriver driver = new JBrowserDriver();
 
        String requestUrl = "https://tennislink.usta.com/tournaments/schedule/SearchResults.aspx" +
@@ -58,7 +58,8 @@ public class SeleniumCrawler {
                "&UserTime=" +
                "&Sanctioned=-1" +
                "&AgeGroup=" +
-               "&SearchRadius=" + toString(searchRadius);
+               "&SearchRadius=" + toString(searchRadius) +
+               "&QuickSearch=" + toString(quickSearch);
 
        log.info("Crawling " + requestUrl);
 
@@ -75,6 +76,10 @@ public class SeleniumCrawler {
            goToNextPage(paginationInfo, driver);
        }
     }
+
+    private String toString(TournamentDivision division) { return division == null ? "" : division.getValue(); }
+
+    private String toString(QuickSearch quickSearch) { return quickSearch == null ? "" : quickSearch.getValue().toString(); }
 
     private String toString(String value) {
         return value == null ? "" : value;

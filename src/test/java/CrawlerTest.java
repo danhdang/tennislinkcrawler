@@ -1,11 +1,12 @@
-import tennislink.crawler.parsers.TournamentPageParser;
-import tennislink.crawler.parsers.TournamentSearchResultParser;
-import tennislink.crawler.maps.CensusGeocoder;
 import org.junit.Assert;
 import org.junit.Test;
+import tennislink.crawler.maps.CensusGeocoder;
 import tennislink.crawler.models.ParsedResult;
 import tennislink.crawler.models.ParsedTournament;
+import tennislink.crawler.parsers.QuickSearch;
 import tennislink.crawler.parsers.SeleniumCrawler;
+import tennislink.crawler.parsers.TournamentDivision;
+import tennislink.crawler.parsers.TournamentPageParser;
 import tennislink.crawler.serializers.DynamoDbSerializer;
 import tennislink.crawler.serializers.ExcelFileSerializer;
 import tennislink.crawler.serializers.JsonSerializer;
@@ -22,7 +23,7 @@ public class CrawlerTest extends BaseTest {
         List<Integer> months = new ArrayList<>();
         months.add(1);
         months.add(2);
-        ParsedResult parsedResult = crawler.findNearestTournaments("92129", months, 2020, 100);
+        ParsedResult parsedResult = crawler.findNearestTournaments("92129", months, 2020, QuickSearch.CurrentlyRegisteringOnline, TournamentDivision.JuniorSingles, 100);
         CensusGeocoder geocoder = new CensusGeocoder();
         parsedResult.getParsedTournamentList().forEach(t -> geocoder.geoCodeTournament(t));
         ExcelFileSerializer excelFileSerializer = new ExcelFileSerializer();
@@ -70,10 +71,12 @@ public class CrawlerTest extends BaseTest {
         TournamentPageParser parser = new TournamentPageParser();
         ParsedTournament tournament = new ParsedTournament();
 
-        parser.parsePage("251658", tournament);
+        parser.parsePage("249341", tournament);
+        CensusGeocoder geocoder = new CensusGeocoder();
+        geocoder.geoCodeTournament(tournament);
 
-        DynamoDbSerializer serializer = new DynamoDbSerializer();
-        serializer.serializeParsedResult(new ParsedResult(tournament));
+        JsonSerializer serializer = new JsonSerializer();
+        serializer.serializeToFiles(new ParsedResult(tournament));
     }
 
 }
